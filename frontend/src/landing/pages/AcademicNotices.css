@@ -1,0 +1,103 @@
+.academic-page {
+  background: linear-gradient(135deg, #f5f7fb, #eef2f9);
+  padding: 100px 20px;
+  min-height: 100vh;
+  position: relative;
+}
+
+.academic-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.academic-title {
+  font-size: 36px;
+  letter-spacing: 4px;
+  color: #1f3b73;
+  margin-bottom: 50px;
+  font-weight: 700;
+  text-align: left;
+  position: relative;
+}
+
+.academic-title::after {
+  content: "";
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, #1f3b73, #00bfff);
+  display: block;
+  margin-top: 15px;
+  border-radius: 2px;
+}
+
+/* Card */
+.academic-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+.academic-card h2 {
+  margin-bottom: 30px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+/* Table Styling */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.holiday-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.holiday-table thead {
+  background: #1f3b73;
+  color: #fff;
+}
+
+.holiday-table th,
+.holiday-table td {
+  padding: 14px 18px;
+  text-align: left;
+}
+
+.holiday-table th {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.holiday-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: 0.3s;
+}
+
+.holiday-table tbody tr:hover {
+  background: #f2f6ff;
+}
+
+.holiday-table td {
+  font-size: 15px;
+  color: #444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .academic-title {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .academic-title::after {
+    margin: 15px auto 0;
+  }
+
+  .academic-card {
+    padding: 25px;
+  }
+}

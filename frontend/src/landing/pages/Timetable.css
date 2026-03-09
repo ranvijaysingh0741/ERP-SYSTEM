@@ -1,0 +1,114 @@
+.timetable-page {
+  background: linear-gradient(135deg, #f5f7fb, #eef2f9);
+  padding: 100px 20px;
+  min-height: 100vh;
+}
+
+.timetable-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.timetable-title {
+  font-size: 36px;
+  letter-spacing: 4px;
+  color: #1f3b73;
+  margin-bottom: 50px;
+  font-weight: 700;
+  position: relative;
+}
+
+.timetable-title::after {
+  content: "";
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, #1f3b73, #00bfff);
+  display: block;
+  margin-top: 15px;
+  border-radius: 2px;
+}
+
+/* Card */
+.timetable-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+.timetable-card h2 {
+  margin-bottom: 30px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+/* Table */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.timetable-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.timetable-table thead {
+  background: #1f3b73;
+  color: #fff;
+}
+
+.timetable-table th,
+.timetable-table td {
+  padding: 15px 18px;
+  text-align: left;
+}
+
+.timetable-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: 0.3s;
+}
+
+.timetable-table tbody tr:hover {
+  background: #f2f6ff;
+}
+
+/* Download Button */
+.download-btn {
+  background: #000;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.download-btn:hover {
+  background: #1f3b73;
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timetable-title {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .timetable-title::after {
+    margin: 15px auto 0;
+  }
+
+  .timetable-card {
+    padding: 25px;
+  }
+
+  .download-btn {
+    padding: 8px 18px;
+    font-size: 12px;
+  }
+}

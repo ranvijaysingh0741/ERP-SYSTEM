@@ -1,0 +1,49 @@
+.verification-page {
+  padding: 80px 20px;
+  background: #f5f7fb;
+  min-height: 80vh;
+}
+
+.verification-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.verification-container h1 {
+  font-size: 36px;
+  color: #1f3c88;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.verification-card {
+  background: #fff;
+  padding: 50px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.verification-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.verification-card p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.email-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: #1f3c88;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.email-btn:hover {
+  background: #163172;
+}

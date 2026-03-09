@@ -1,0 +1,91 @@
+.contact-wrapper {
+  background: #f3f5f9;
+  padding: 80px 20px;
+  position: relative;
+}
+
+/* Soft background circles */
+.contact-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(30, 60, 120, 0.08);
+  border-radius: 50%;
+  top: -100px;
+  left: -100px;
+}
+
+.contact-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: rgba(30, 60, 120, 0.05);
+  border-radius: 50%;
+  bottom: -120px;
+  right: -80px;
+}
+
+/* Card */
+.contact-card {
+  max-width: 1000px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 2;
+}
+
+/* Row layout */
+.contact-row {
+  display: flex;
+  gap: 30px;
+}
+
+.top-row {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+.contact-box {
+  flex: 1;
+  text-align: center;
+}
+
+.contact-box h3 {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #1f3b73;
+}
+
+.contact-box p {
+  font-size: 16px;
+  color: #333;
+  margin: 5px 0;
+}
+
+/* Full width timing box */
+.full-width {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-row {
+    flex-direction: column;
+  }
+
+  .contact-card {
+    padding: 30px 20px;
+  }
+
+  .contact-box {
+    margin-bottom: 20px;
+  }
+}

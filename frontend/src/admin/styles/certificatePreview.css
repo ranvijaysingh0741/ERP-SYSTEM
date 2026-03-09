@@ -1,0 +1,23 @@
+.certificate-wrapper {
+  padding: 30px;
+  text-align: center;
+}
+
+.certificate-box {
+  background: white;
+  padding: 40px;
+  border: 2px solid #000;
+  width: 800px;
+  margin: auto;
+}
+
+.print-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+
+@media print {
+  .print-btn {
+    display: none;
+  }
+}

@@ -1,0 +1,118 @@
+.announcement-section {
+  background: linear-gradient(135deg, #f4f6f9, #e9eef5);
+  padding: 90px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft floating circles background */
+.announcement-section::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(30, 60, 120, 0.06);
+  border-radius: 50%;
+  top: -120px;
+  left: -120px;
+}
+
+.announcement-section::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: rgba(30, 60, 120, 0.05);
+  border-radius: 50%;
+  bottom: -150px;
+  right: -100px;
+}
+
+.announcement-container {
+  max-width: 900px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.announcement-title {
+  font-size: 32px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #1f3b73;
+  position: relative;
+}
+
+.announcement-title::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #1f3b73, #00bfff);
+  display: block;
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* Announcement items */
+.announcement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.announcement-item {
+  background: #ffffff;
+  padding: 20px 25px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.announcement-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.pin {
+  font-size: 20px;
+}
+
+.announcement-item p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+  text-align: left;
+}
+
+.announcement-link {
+  color: #1f3b73;
+  font-weight: 600;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.announcement-link:hover {
+  color: #00bfff;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .announcement-title {
+    font-size: 24px;
+  }
+
+  .announcement-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .announcement-item p {
+    text-align: center;
+  }
+}

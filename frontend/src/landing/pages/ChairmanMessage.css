@@ -1,0 +1,87 @@
+/* ============================
+   PAGE BACKGROUND
+============================ */
+
+.chairman-page {
+  background: linear-gradient(135deg, #f4f6fb 0%, #e9edf7 100%);
+  padding-bottom: 80px;
+  position: relative;
+}
+
+/* ============================
+   TOP BLUE BANNER
+============================ */
+
+.chairman-banner {
+  background: linear-gradient(135deg, #0f2f6b, #1f3b73);
+  padding: 70px 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.chairman-banner h1 {
+  font-size: 32px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+/* ============================
+   MAIN CARD
+============================ */
+
+.chairman-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -50px;
+}
+
+.chairman-card {
+  background: white;
+  max-width: 1000px;
+  width: 90%;
+  padding: 50px 60px;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* Title inside card */
+
+.chairman-card h2 {
+  color: #1f3b73;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+/* Paragraph */
+
+.chairman-card p {
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+/* Signature */
+
+.signature {
+  margin-top: 30px;
+  font-weight: 600;
+  color: #1f3b73;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 768px) {
+  .chairman-card {
+    padding: 30px;
+  }
+
+  .chairman-banner h1 {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,99 @@
+.class-students {
+  padding: 20px;
+}
+
+.table-container {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #4a6cf7;
+  color: white;
+}
+
+tr:hover {
+  background: #f5f7ff;
+}
+.search-input {
+  margin-top: 15px;
+  padding: 10px;
+  width: 300px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #4a6cf7;
+}
+.student-photo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.search-input {
+  margin-top: 15px;
+  padding: 10px;
+  width: 280px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.table-container {
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #4a6cf7;
+  color: white;
+  padding: 12px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+  background: #f5f7ff;
+} 
+.enroll-link {
+  color: #4a6cf7;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 9999;   /* ✅ VERY IMPORTANT */
+}
+
+.table-container {
+  position: relative;
+  z-index: 9999;
+}

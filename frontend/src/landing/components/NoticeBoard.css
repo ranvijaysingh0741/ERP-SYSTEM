@@ -1,0 +1,15 @@
+.notice ul {
+  list-style: none;
+  max-width: 600px;
+  margin: auto;
+}
+
+.notice li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  transition: 0.3s;
+}
+
+.notice li:hover {
+  background: #eef3ff;
+}

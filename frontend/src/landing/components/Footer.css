@@ -1,0 +1,94 @@
+.vms-footer {
+  background: linear-gradient(135deg, #1f3b73, #243e7c);
+  color: #ffffff;
+  padding: 70px 20px 30px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.vms-footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Section */
+.vms-footer-section {
+  flex: 1;
+  min-width: 260px;
+}
+
+.vms-footer-section h3 {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  position: relative;
+}
+
+.vms-footer-section h3::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background: #ffffff;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+}
+
+/* Paragraph */
+.vms-footer-section p {
+  line-height: 1.8;
+  font-size: 15px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+/* Lists */
+.vms-footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vms-footer-section ul li {
+  margin-bottom: 12px;
+}
+
+.vms-footer-section ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.vms-footer-section ul li a:hover {
+  padding-left: 6px;
+  opacity: 0.8;
+}
+
+/* Bottom copyright */
+.vms-footer-bottom {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .vms-footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .vms-footer-section h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

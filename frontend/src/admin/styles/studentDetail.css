@@ -1,0 +1,108 @@
+/* ============================= */
+/* PAGE WRAPPER */
+/* ============================= */
+
+.student-detail-page {
+  padding: 40px 60px;
+}
+
+.student-detail-page h2 {
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* ============================= */
+/* TABLE CONTAINER */
+/* ============================= */
+
+.table-container {
+  background: rgba(194, 157, 157, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+/* ============================= */
+/* TABLE */
+/* ============================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+/* ===== HEADER FIX (THIS WILL REMOVE BLUE) ===== */
+
+thead th {
+  background: linear-gradient(90deg, #8b5e3c, #bac0a8) !important;
+  color: white !important;
+  padding: 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ============================= */
+/* BODY */
+/* ============================= */
+
+td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+/* ============================= */
+/* ROW HOVER EFFECT */
+/* ============================= */
+
+tbody tr {
+  transition: all 0.25s ease;
+}
+
+tbody tr:hover {
+  background-color: rgba(242, 156, 158, 0.08);
+  transform: scale(1.01);
+}
+
+/* ============================= */
+/* VIEW BUTTON */
+/* ============================= */
+
+.view-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #bb5d66, #f2c0d3);
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .student-detail-page {
+    padding: 20px;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+}

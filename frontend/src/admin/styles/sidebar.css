@@ -1,0 +1,195 @@
+/* ============================= */
+/* SIDEBAR CONTAINER */
+/* ============================= */
+
+.sidebar {
+  width: 270px;
+  height: 100vh;
+  background: linear-gradient(180deg, #9e6b68, #587b63);
+  color: rgb(236, 220, 220);
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;   /* FIX: prevent hiding */
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+/* ============================= */
+/* LOGO SECTION */
+/* ============================= */
+
+.logo-section {
+  text-align: center;
+  margin-bottom: 40px;   /* better spacing */
+}
+
+.app-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.board-name {
+  font-size: 22px;
+  opacity: 0.8;
+  margin: 8px 0;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;   /* vertical alignment */
+  gap: 15px; 
+   margin-left: 40px; 
+     margin-bottom: 50px; 
+     font-size: 12px;     
+     font-weight: 800;   /* space between text & logo */
+} 
+
+
+.board-logo {
+  width: 40px;
+  margin-top: 0;   /* remove old margin */
+}
+
+/* ============================= */
+/* MENU */
+/* ============================= */
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.menu li {
+  margin-bottom: 12px;
+}
+
+/* ============================= */
+/* MAIN MENU LINKS */
+/* ============================= */
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+/* Hover effect */
+.menu-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Active pill */
+.menu-link.active {
+  background: white;
+  color: #db9eea;
+  font-weight: 600;
+}
+
+/* Change icon color when active */
+.menu-link.active svg {
+  color: #988eb3;
+}
+
+/* ============================= */
+/* DROPDOWN */
+/* ============================= */
+
+.dropdown-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* ============================= */
+/* SUBMENU */
+/* ============================= */
+
+.submenu {
+  list-style: none;
+  padding-left: 45px;   /* FIX: better alignment */
+  margin-top: 8px;
+  animation: slideDown 0.3s ease;
+}
+
+.submenu li {
+  margin-bottom: 8px;
+}
+
+.submenu a {
+  display: block;
+  padding: 6px 0;
+  border-radius: 20px;
+  font-size: 14px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  transition: 0.3s;
+}
+
+.submenu a:hover {
+  color: white;
+}
+
+/* ============================= */
+/* DROPDOWN ANIMATION */
+/* ============================= */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================= */
+/* LOGOUT */
+/* ============================= */
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 125px;
+}
+
+.logout:hover {
+  background: rgba(185, 61, 61, 0.15);
+}

@@ -1,0 +1,9 @@
+.recognition {
+  background: white;
+}
+
+.recognition p {
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.8;
+}

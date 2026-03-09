@@ -1,0 +1,50 @@
+.calendar-card {
+  background: rgb(227, 221, 221);
+  padding: 20px;
+  border-radius: 14px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  margin-top: 15px;
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.calendar-grid span {
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.today {
+  background: #4a6cf7;
+  color: white;
+}
+
+.agenda-item {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.purple { background:#e8e6f7; }
+.yellow { background:#f6edcc; }
+.blue { background:#ddeaf0; }

@@ -1,0 +1,22 @@
+.portal-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.portal-buttons button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  background: #004080;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.portal-buttons button:hover {
+  background: #ffd700;
+  color: black;
+  transform: scale(1.05);
+}

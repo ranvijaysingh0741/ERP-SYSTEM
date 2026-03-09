@@ -1,0 +1,46 @@
+/* ===== ANNOUNCEMENT BAR ===== */
+
+.announcement {
+  background: linear-gradient(90deg, #002147, #004080);
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle moving shine effect */
+.announcement::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: skewX(-25deg);
+  animation: shine 4s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .announcement {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

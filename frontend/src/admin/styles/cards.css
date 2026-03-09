@@ -1,0 +1,95 @@
+.cards-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+.card {
+  background: rgb(230, 224, 224);
+  padding: 20px;
+  border-radius: 14px;
+  flex: 1;
+  min-width: 260px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* STUDENT CARD */
+.student-card {
+  text-align: center;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* CHART */
+.chart-wrapper {
+  width: 230px;
+  margin: 15px auto;
+  position: relative;
+}
+
+/* CENTER ICON */
+.center-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  gap: 8px;
+}
+
+/* GENDER INFO */
+.gender-info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.gender-info p {
+  color: gray;
+  font-size: 14px;
+}
+
+/* DOTS */
+.dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.boys {
+  background: #9bd3f7;
+}
+
+.girls {
+  background: #de9f9f;
+}
+
+/* INFO CARDS */
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-icon {
+  font-size: 26px;
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.student-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-students {
+  color: #4a6cf7;
+  font-weight: bold;
+}

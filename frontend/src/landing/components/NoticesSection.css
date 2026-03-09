@@ -1,0 +1,118 @@
+.notices-section {
+  background: linear-gradient(135deg, #f4f6fa, #eef2f8);
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background shapes */
+.notices-section::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(30, 60, 120, 0.05);
+  border-radius: 50%;
+  top: -200px;
+  left: -200px;
+}
+
+.notices-section::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(30, 60, 120, 0.04);
+  border-radius: 50%;
+  bottom: -150px;
+  right: -150px;
+}
+
+.notices-container {
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.notices-title {
+  text-align: center;
+  font-size: 34px;
+  letter-spacing: 4px;
+  margin-bottom: 70px;
+  font-weight: 700;
+  color: #1f3b73;
+  position: relative;
+}
+
+.notices-title::after {
+  content: "";
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #1f3b73, #00bfff);
+  display: block;
+  margin: 20px auto 0;
+  border-radius: 2px;
+}
+
+/* Grid Layout */
+.notices-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* Card Design */
+.notice-card {
+  background: #ffffff;
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  text-align: left;
+  position: relative;
+}
+
+.notice-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.notice-card h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #1f3b73;
+  letter-spacing: 1px;
+}
+
+.notice-card p {
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .notices-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .notices-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .notices-title {
+    font-size: 26px;
+  }
+
+  .notice-card {
+    text-align: center;
+  }
+}
+.notice-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}

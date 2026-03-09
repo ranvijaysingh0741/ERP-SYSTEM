@@ -1,0 +1,175 @@
+/* =========================
+PAGE BACKGROUND
+========================= */
+
+.login-wrapper{
+
+  min-height:100vh;
+
+  background:#f5f7fb url("../assets/abstract-bg.png") center/cover no-repeat;
+
+}
+
+/* =========================
+HEADER
+========================= */
+
+.login-header{
+
+  text-align:center;
+
+  padding:40px 0;
+
+}
+
+.login-header h1{
+
+  color:#1f3b73;
+
+  letter-spacing:4px;
+
+  font-weight:600;
+
+}
+
+
+/* =========================
+CARD CONTAINER
+========================= */
+
+.login-container{
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+}
+
+
+/* =========================
+LOGIN CARD
+========================= */
+
+.login-card{
+
+  width:420px;
+
+  padding:40px;
+
+  background:rgba(255,255,255,0.85);
+
+  border-radius:10px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:12px;
+
+  text-align:left;
+
+}
+
+/* logo */
+
+.login-logo{
+
+  height:60px;
+
+  margin:auto;
+
+  margin-bottom:10px;
+
+}
+
+/* labels */
+
+.login-card label{
+
+  font-size:12px;
+
+  letter-spacing:1px;
+
+  color:#1f3b73;
+
+  font-weight:600;
+
+}
+
+/* inputs */
+
+.login-card input{
+
+  padding:12px;
+
+  border-radius:6px;
+
+  border:1px solid #ddd;
+
+}
+
+/* =========================
+CAPTCHA
+========================= */
+
+.captcha-section{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+}
+
+.captcha-img{
+
+  height:40px;
+
+  border:1px solid #ccc;
+
+}
+
+.refresh-btn{
+
+  background:none;
+
+  border:none;
+
+  font-size:20px;
+
+  cursor:pointer;
+
+}
+
+/* =========================
+BUTTON
+========================= */
+
+.login-btn{
+
+  margin-top:10px;
+
+  padding:12px;
+
+  background:black;
+
+  color:white;
+
+  border:none;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+}
+
+.login-btn:hover{
+
+  background:#1f3b73;
+
+}

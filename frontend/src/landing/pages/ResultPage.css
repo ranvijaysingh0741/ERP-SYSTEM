@@ -1,0 +1,120 @@
+/* ===============================
+   PAGE BACKGROUND
+================================= */
+
+.result-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f4f6fb 0%, #e9edf7 100%);
+  padding-bottom: 80px;
+}
+
+/* ===============================
+   HEADER SECTION
+================================= */
+
+.result-header {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+.result-header h1 {
+  color: #1f3b73;
+  letter-spacing: 3px;
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.result-header p {
+  color: #555;
+  font-size: 14px;
+}
+
+.old-link {
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ===============================
+   CARD SECTION
+================================= */
+
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-card {
+  background: #ffffff;
+  width: 450px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+}
+
+.result-logo {
+  height: 60px;
+  margin-bottom: 15px;
+  align-self: center;
+}
+
+/* ===============================
+   FORM ELEMENTS
+================================= */
+
+.result-card label {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #1f3b73;
+  text-align: left;
+}
+
+.result-card input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.result-card input:focus {
+  border-color: #1f3b73;
+  box-shadow: 0 0 8px rgba(31, 59, 115, 0.2);
+}
+
+/* ===============================
+   BUTTON
+================================= */
+
+.search-btn {
+  margin-top: 10px;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.search-btn:hover {
+  background: #1f3b73;
+}
+
+/* ===============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 600px) {
+  .result-card {
+    width: 90%;
+    padding: 30px;
+  }
+}

@@ -1,0 +1,35 @@
+.admin-overview {
+  background: rgb(255, 251, 251);
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-text h2 {
+  margin-bottom: 5px;
+  font-size: 35px;
+}
+
+.admin-text h4 {
+  color: #ae6d4b;
+  margin-bottom: 10px;
+}
+
+.admin-text p {
+  color: gray;
+  max-width: 600px;
+  
+}
+
+.admin-badge {
+  background: #ca7575;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+}

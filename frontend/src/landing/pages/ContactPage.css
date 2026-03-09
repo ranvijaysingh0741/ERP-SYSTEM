@@ -1,0 +1,134 @@
+/* ===============================
+   CONTACT PAGE - PREMIUM ACADEMIC STYLE
+================================== */
+
+.contact-page {
+  position: relative;
+  padding: 100px 20px;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+
+  /* Elegant Academic Gradient */
+  background: linear-gradient(
+    135deg,
+    #f4f7fc 0%,
+    #e8eef9 40%,
+    #dfe7f5 100%
+  );
+}
+
+/* Decorative Background Shapes */
+.contact-page::before,
+.contact-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.contact-page::before {
+  width: 400px;
+  height: 400px;
+  background: rgba(31, 59, 115, 0.08);
+  top: -120px;
+  left: -120px;
+}
+
+.contact-page::after {
+  width: 350px;
+  height: 350px;
+  background: rgba(0, 191, 255, 0.07);
+  bottom: -120px;
+  right: -120px;
+}
+
+/* Header */
+.contact-header {
+  text-align: center;
+  margin-bottom: 70px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-header h1 {
+  font-size: 40px;
+  letter-spacing: 5px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #1f3b73, #00bfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Layout */
+.contact-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Contact Cards */
+.contact-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: 0.4s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 55px rgba(31, 59, 115, 0.15);
+}
+
+/* Section Title */
+.contact-card h2 {
+  color: #1f3b73;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* Paragraph Styling */
+.contact-card p {
+  margin-bottom: 8px;
+  line-height: 1.7;
+  color: #333;
+  font-size: 15px;
+}
+
+/* Sub Blocks */
+.contact-block {
+  margin-top: 25px;
+  padding-left: 12px;
+  border-left: 3px solid #1f3b73;
+}
+
+.contact-block h4 {
+  margin-bottom: 6px;
+  color: #1f3b73;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-header h1 {
+    font-size: 28px;
+  }
+
+  .contact-card {
+    padding: 25px;
+  }
+}
