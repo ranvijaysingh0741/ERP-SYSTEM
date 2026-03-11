@@ -19,10 +19,13 @@ function Navbar() {
       {/* MAIN NAVBAR */}
       <nav className="navbar">
         <div className="logo-section">
-          <img src={logo} alt="Board Logo" className="logo" />
+          <Link to="/">
+            <img src={logo} alt="Board Logo" className="logo" />
+          </Link>
           <h5>Board of Vocational and Skills Higher Secondary Education</h5>
           <p>Bhopal, Madhya Pradesh</p>
         </div>
+        
 
         <ul className="nav-menu">
           <li>
