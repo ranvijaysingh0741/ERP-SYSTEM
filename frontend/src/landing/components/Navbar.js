@@ -26,7 +26,6 @@ function Navbar() {
           <p>Bhopal, Madhya Pradesh</p>
         </div>
         
-
         <ul className="nav-menu">
           <li>
             <Link to="/">HOME</Link>
