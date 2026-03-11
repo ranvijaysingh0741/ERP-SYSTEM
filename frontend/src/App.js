@@ -17,6 +17,7 @@ import NoticesSection from "./landing/components/NoticesSection";
 import LatestAnnouncements from "./landing/components/LatestAnnouncements";
 import ContactInfoSection from "./landing/components/ContactInfoSection";
 import Footer from "./landing/components/Footer";
+import ScrollToTop from "./landing/components/ScrollTotop";
 
 /* ---------- LANDING PAGES ---------- */
 
@@ -105,6 +106,10 @@ function App() {
   return (
 
     <Router>
+    <AnnouncementBar />
+      <Navbar />
+      <ScrollToTop />
+
 
       <Routes>
 
