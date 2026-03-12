@@ -41,7 +41,7 @@ function Navbar() {
           <li className="dropdown">
             PROGRAMMES ▼
             <div className="dropdown-menu">
-              <Link to="/upper-primary">Primary Level</Link>
+              <Link to="/upper-primary">UpperPrimary Level</Link>
               <Link to="/secondary">Secondary Level</Link>
               <Link to="/senior-secondary">Sr. Secondary Level</Link>
               <Link to="/skills">Skills & Vocational Level</Link>
