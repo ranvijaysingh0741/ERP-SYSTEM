@@ -19,9 +19,7 @@ function Navbar() {
       {/* MAIN NAVBAR */}
       <nav className="navbar">
         <div className="logo-section">
-          <Link to="/">
-            <img src={logo} alt="Board Logo" className="logo" />
-          </Link>
+          <img src={logo} alt="Board Logo" className="logo" />
           <h5>Board of Vocational and Skills Higher Secondary Education</h5>
           <p>Bhopal, Madhya Pradesh</p>
         </div>
@@ -43,7 +41,7 @@ function Navbar() {
           <li className="dropdown">
             PROGRAMMES ▼
             <div className="dropdown-menu">
-              <Link to="/upper-primary">Open Basic Education Level</Link>
+              <Link to="/upper-primary">Primary Level</Link>
               <Link to="/secondary">Secondary Level</Link>
               <Link to="/senior-secondary">Sr. Secondary Level</Link>
               <Link to="/skills">Skills & Vocational Level</Link>

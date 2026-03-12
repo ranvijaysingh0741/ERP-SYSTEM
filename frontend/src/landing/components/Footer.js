@@ -42,7 +42,7 @@ const Footer = () => {
           <h3>PROGRAMMES</h3>
           <ul>
             <li>
-              <Link to="/">Open Basic Education Level</Link>
+              <Link to="/upper-primary">Upper Primary(Class VII)</Link>
             </li>
             <li>
               <Link to="/secondary">Secondary (Class X)</Link>

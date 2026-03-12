@@ -32,6 +32,40 @@
 .top-right a:hover {
   color: #ffd700;
 }
+/* =========================================
+   LOGO SECTION
+========================================= */
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 65px;
+}
+
+/* text next to logo */
+
+.logo-text h5 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f3b73;
+}
+
+.logo-text p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* prevent text from breaking layout */
+
+.logo-text {
+  max-width: 420px;
+}
 
 /* =========================================
    MAIN NAVBAR
@@ -177,4 +211,16 @@
     opacity: 1;
     visibility: visible;
   }
+}
+.dropdown-menu{
+opacity:0;
+visibility:hidden;
+transform:translateY(10px);
+transition:all 0.3s ease;
+}
+
+.nav-item:hover .dropdown-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
 }
