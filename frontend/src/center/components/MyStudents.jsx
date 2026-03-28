@@ -19,7 +19,7 @@ export default function MyStudents() {
     async (pageNo = 1) => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/center/students?page=${pageNo}&search=${search}&status=${status}`,
+          `https://erp-backend-lrfi.onrender.com/api/center/students?page=${pageNo}&search=${search}&status=${status}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/admin";
+const API = "https://erp-backend-lrfi.onrender.com/api/admin";
 
 // 🔐 TOKEN
 const getToken = () => localStorage.getItem("token");

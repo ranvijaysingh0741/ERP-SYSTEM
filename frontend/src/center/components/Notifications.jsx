@@ -9,7 +9,7 @@ export default function Notifications() {
   }, []);
 
   const loadNotifications = async () => {
-    const res = await fetch("http://localhost:5000/api/center/notifications", {
+    const res = await fetch("https://erp-backend-lrfi.onrender.com/api/center/notifications", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }

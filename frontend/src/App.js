@@ -106,8 +106,7 @@ function App() {
   return (
 
     <Router>
-    <AnnouncementBar />
-      <Navbar />
+    
       <ScrollToTop />
 
 

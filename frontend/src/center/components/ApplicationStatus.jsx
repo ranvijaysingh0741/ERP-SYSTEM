@@ -9,7 +9,7 @@ export default function ApplicationStatus() {
   }, []);
 
   const loadStatus = async () => {
-    const res = await fetch("http://localhost:5000/api/center/students", {
+    const res = await fetch("https://erp-backend-lrfi.onrender.com/api/center/students", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }

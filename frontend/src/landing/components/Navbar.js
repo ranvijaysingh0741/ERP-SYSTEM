@@ -21,7 +21,7 @@ function Navbar() {
         <div className="logo-section">
           <img src={logo} alt="Board Logo" className="logo" />
           <h5>Board of Vocational and Skills Higher Secondary Education</h5>
-          <p>Bhopal, Madhya Pradesh</p>
+          <p></p>
         </div>
         
         <ul className="nav-menu">

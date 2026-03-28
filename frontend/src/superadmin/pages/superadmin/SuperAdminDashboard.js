@@ -47,7 +47,7 @@ const SuperAdminDashboard = () => {
 
     // ✅ API CALL
     axios.get(
-      "http://localhost:5000/api/superadmin/dashboard",
+      "https://erp-backend-lrfi.onrender.com/api/superadmin/dashboard",
       {
         headers:{
           Authorization:`Bearer ${token}`

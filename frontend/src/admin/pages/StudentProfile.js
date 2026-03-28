@@ -13,7 +13,7 @@ const StudentProfile = () => {
     const loadStudent = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/api/admin/student/${enrollNo}`,
+          `https://erp-backend-lrfi.onrender.com/api/admin/student/${enrollNo}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`
