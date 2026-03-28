@@ -1,114 +1,208 @@
-/* =====================================
-   PREMIUM ABOUT SECTION (SCREENSHOT STYLE)
-===================================== */
+/* ===== ABOUT SECTION - MATCH REFERENCE SCREENSHOT ===== */
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap');
 
 .about {
   position: relative;
-  padding: 110px 20px;
-  background: #f3f5f9;
+  padding: 70px 20px;
+  background: #f4f4f4;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-/* Main Card */
+/* light background shapes outside card */
+.about::before,
+.about::after {
+  content: "";
+  position: absolute;
+  background: rgba(198, 186, 170, 0.28);
+  z-index: 0;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.about::before {
+  width: 360px;
+  height: 360px;
+  left: -70px;
+  top: 20px;
+  transform: rotate(-18deg);
+}
+
+.about::after {
+  width: 420px;
+  height: 420px;
+  right: -90px;
+  bottom: -20px;
+  transform: rotate(10deg);
+}
+
+/* main box */
 .about-container {
   position: relative;
-  max-width: 1100px;
   width: 100%;
-  background: #eef2f8;
-  border-radius: 20px;
-  padding: 60px 70px;
+  max-width: 1240px;
+  background: #eef1f7;
+  padding: 65px 55px 45px;
   text-align: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  z-index: 1;
 }
 
-/* Soft Circular Watermarks */
+/* large faded circular watermark shapes */
 .about-container::before,
 .about-container::after {
   content: "";
   position: absolute;
-  border-radius: 50%;
-  background: rgba(30, 58, 138, 0.06);
+  inset: 0;
   z-index: 0;
+  pointer-events: none;
 }
 
 .about-container::before {
-  width: 500px;
-  height: 500px;
-  top: -150px;
-  left: -150px;
+  background:
+    radial-gradient(circle at 10% 18%, rgba(88, 116, 185, 0.10) 0 180px, transparent 181px),
+    radial-gradient(circle at 28% 82%, rgba(88, 116, 185, 0.10) 0 170px, transparent 171px),
+    radial-gradient(circle at 58% 16%, rgba(88, 116, 185, 0.10) 0 160px, transparent 161px),
+    radial-gradient(circle at 72% 78%, rgba(88, 116, 185, 0.10) 0 185px, transparent 186px),
+    radial-gradient(circle at 92% 12%, rgba(88, 116, 185, 0.10) 0 170px, transparent 171px),
+    radial-gradient(circle at 50% 110%, rgba(88, 116, 185, 0.10) 0 220px, transparent 221px);
 }
 
 .about-container::after {
-  width: 450px;
-  height: 450px;
-  bottom: -120px;
-  right: -120px;
+  background:
+    radial-gradient(circle at 18% 54%, rgba(88, 116, 185, 0.07) 0 120px, transparent 121px),
+    radial-gradient(circle at 42% 40%, rgba(88, 116, 185, 0.07) 0 130px, transparent 131px),
+    radial-gradient(circle at 64% 58%, rgba(88, 116, 185, 0.07) 0 130px, transparent 131px),
+    radial-gradient(circle at 86% 74%, rgba(88, 116, 185, 0.07) 0 120px, transparent 121px);
 }
 
-/* Bring content above circles */
-.about-container * {
+.about-container > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-/* Main Heading */
-.about h2 {
+/* heading */
+.about-title {
+  margin: 0 0 18px;
   font-size: 30px;
+  line-height: 1.2;
   font-weight: 700;
-  color: #1f3a6d;
   letter-spacing: 2px;
-  margin-bottom: 10px;
+  color: #193f86;
+  text-transform: uppercase;
 }
 
-/* Decorative Stars Divider */
-/* Paragraph Styling */
-.about p {
-  font-size: 16px;
-  color: #333;
-  line-height: 1.9;
+.title-line {
+  display: inline-block;
+}
+
+.about-divider {
+  width: 64%;
+  height: 2px;
+  margin: 10px auto 4px;
+  background: #d2d2d2;
+}
+
+.about-stars {
+  font-size: 22px;
+  line-height: 1;
+  color: #193f86;
+  letter-spacing: 4px;
+  font-weight: 700;
   margin-bottom: 18px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-/* Button */
+/* paragraph text */
+.about p {
+  margin: 0 auto 22px;
+  max-width: 1160px;
+  font-size: 18px;
+  line-height: 1.45;
+  color: #111111;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* remove old styles effect */
+.about h2,
+.about h3 {
+  margin: 0;
+}
+
+/* optional button styling if you keep button below */
 .contact-btn {
-  margin-top: 30px;
-  background: #1f3a6d;
-  color: #fff;
-  padding: 14px 35px;
+  margin-top: 18px;
+  background: #193f86;
+  color: #ffffff;
   border: none;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   transition: 0.3s ease;
 }
 
 .contact-btn:hover {
-  background: #162b52;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(31, 58, 109, 0.3);
+  background: #102d63;
 }
 
-/* Responsive */
+/* hide wave because screenshot doesn't have it */
+.about-wave {
+  display: none;
+}
+
+/* responsive */
 @media (max-width: 992px) {
   .about-container {
-    padding: 45px 30px;
+    padding: 45px 28px 30px;
   }
 
-  .about h2 {
+  .about-title {
     font-size: 24px;
+  }
+
+  .about-divider {
+    width: 78%;
+  }
+
+  .about p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 576px) {
+  .about {
+    padding: 40px 12px;
+  }
+
+  .about-container {
+    padding: 30px 18px 20px;
+  }
+
+  .about-title {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .about-stars {
+    font-size: 18px;
+    letter-spacing: 3px;
+  }
+
+  .about-divider {
+    width: 90%;
   }
 
   .about p {
     font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 18px;
   }
 }
