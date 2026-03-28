@@ -1,31 +1,35 @@
+import { useEffect, useState } from "react";
+import API from "../../api/axios";
+
 export default function Profile() {
-  const student = {
-    name: "Ananya S.",
-    class: "10th",
-    roll: "23",
-    section: "A",
-    dob: "12 Aug 2009",
-    gender: "Female",
-    phone: "+91 9876543210",
-    email: "ananya@email.com",
 
-    fatherName: "Mr. Rajesh Sharma",
-    motherName: "Mrs. Sunita Sharma",
-    parentPhone: "+91 9123456780",
+  const [student, setStudent] = useState({});
 
-    address: "H.No. 21, Green Park Colony, Bhopal, Madhya Pradesh, India",
+  useEffect(() => {
 
-    photo: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-  };
+    API.get("/student/profile")
+      .then(res => {
+        setStudent(res.data);
+      })
+      .catch(err => {
+        console.log("Profile API error:", err);
+      });
+
+  }, []);
 
   return (
     <div style={styles.container}>
       <h2>My Profile</h2>
 
       <div style={styles.card}>
-        {/* -------- Top Section (Photo + Basic Info) -------- */}
+        
+        {/* Top Section */}
         <div style={styles.topSection}>
-          <img src={student.photo} alt="student" style={styles.photo} />
+          <img
+            src={student.photo || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
+            alt="student"
+            style={styles.photo}
+          />
 
           <div>
             <h3 style={{ margin: "0 0 10px 0" }}>{student.name}</h3>
@@ -37,7 +41,7 @@ export default function Profile() {
 
         <hr />
 
-        {/* -------- Student Details -------- */}
+        {/* Student Details */}
         <h3>Student Details</h3>
         <div style={styles.grid}>
           <Info label="Date of Birth" value={student.dob} />
@@ -48,44 +52,48 @@ export default function Profile() {
 
         <hr />
 
-        {/* -------- Parent Details -------- */}
+        {/* Parent Details */}
         <h3>Parent Details</h3>
         <div style={styles.grid}>
-          <Info label="Father Name" value={student.fatherName} />
-          <Info label="Mother Name" value={student.motherName} />
-          <Info label="Parent Phone" value={student.parentPhone} />
+          <Info label="Father Name" value={student.father_name} />
+          <Info label="Mother Name" value={student.mother_name} />
+          <Info label="Parent Phone" value={student.parent_phone} />
         </div>
 
         <hr />
 
-        {/* -------- Address -------- */}
+        {/* Address */}
         <h3>Address</h3>
         <p style={styles.address}>{student.address}</p>
+
       </div>
     </div>
   );
 }
 
-/* ---------- Small Reusable Info Row ---------- */
+
+/* ---------- Reusable Info Component ---------- */
 function Info({ label, value }) {
   return (
     <div style={styles.infoBox}>
       <p style={styles.label}>{label}</p>
-      <p style={styles.value}>{value}</p>
+      <p style={styles.value}>{value || "-"}</p>
     </div>
   );
 }
 
+
 /* ---------- Styles ---------- */
 const styles = {
+
   container: {
     padding: "20px",
     background: "#ffffff",
-    minHeight: "100vh"
+    minHeight: "10vh"
   },
 
   card: {
-    background: "#fff",
+    background: "#eff6fa",
     padding: "25px",
     borderRadius: "12px",
     boxShadow: "0 2px 8px rgba(0,0,0,0.08)"
@@ -133,4 +141,5 @@ const styles = {
     padding: "12px",
     borderRadius: "6px"
   }
+
 };

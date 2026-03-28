@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import API from "../../api/axios";
 
 export default function Documents() {
-  const [docs, setDocs] = useState([
-    { name: "Aadhaar Card", status: "Uploaded" },
-    { name: "10th Marksheet", status: "Uploaded" },
-    { name: "12th Marksheet", status: "Pending" },
-    { name: "Transfer Certificate", status: "Pending" }
-  ]);
 
-  const handleUpload = (index) => {
-    const updated = [...docs];
-    updated[index].status = "Uploaded";
-    setDocs(updated);
-  };
+  const [docs, setDocs] = useState([]);
+
+  useEffect(() => {
+
+    API.get("/student/documents")
+      .then(res => {
+        setDocs(res.data);
+      })
+      .catch(err => {
+        console.log("Documents API error:", err);
+      });
+
+  }, []);
 
   return (
     <div style={styles.container}>
@@ -29,9 +32,11 @@ export default function Documents() {
           </thead>
 
           <tbody>
+
             {docs.map((doc, index) => (
               <tr key={index} style={styles.row}>
-                <td>{doc.name}</td>
+                
+                <td>{doc.document_name}</td>
 
                 <td>
                   <span
@@ -46,18 +51,19 @@ export default function Documents() {
 
                 <td>
                   {doc.status === "Uploaded" ? (
-                    <button style={styles.downloadBtn}>Download</button>
+                    <button style={styles.downloadBtn}>
+                      Download
+                    </button>
                   ) : (
-                    <button
-                      style={styles.uploadBtn}
-                      onClick={() => handleUpload(index)}
-                    >
+                    <button style={styles.uploadBtn}>
                       Upload
                     </button>
                   )}
                 </td>
+
               </tr>
             ))}
+
           </tbody>
         </table>
       </div>
@@ -69,11 +75,11 @@ const styles = {
   container: {
     padding: "20px",
     background: "#ffffff",
-    minHeight: "100vh"
+    minHeight: "10vh"
   },
 
   card: {
-    background: "#fff",
+    background: "#e9f1fa",
     padding: "20px",
     borderRadius: "10px",
     boxShadow: "0 2px 8px rgba(0,0,0,0.08)"

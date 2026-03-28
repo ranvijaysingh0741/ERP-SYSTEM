@@ -17,7 +17,7 @@
 /* ============================= */
 
 .table-container {
-  background: rgba(194, 157, 157, 0.85);
+  background: rgba(211, 229, 254, 0.85);
   backdrop-filter: blur(8px);
   border-radius: 18px;
   padding: 25px;
@@ -38,7 +38,7 @@ table {
 /* ===== HEADER FIX (THIS WILL REMOVE BLUE) ===== */
 
 thead th {
-  background: linear-gradient(90deg, #8b5e3c, #bac0a8) !important;
+  background: linear-gradient(90deg, #7aa3cd, #a0d4e7) !important;
   color: white !important;
   padding: 14px;
   text-align: left;
@@ -76,7 +76,7 @@ tbody tr:hover {
   display: inline-block;
   padding: 6px 14px;
   border-radius: 20px;
-  background: linear-gradient(135deg, #bb5d66, #f2c0d3);
+  background: linear-gradient(135deg, #0d1f6e, #72b7c5);
   color: white;
   text-decoration: none;
   font-size: 13px;

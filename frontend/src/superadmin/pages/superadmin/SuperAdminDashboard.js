@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import {
   FaUsers,
   FaSchool,
@@ -26,21 +28,47 @@ const SuperAdminDashboard = () => {
 
   const navigate = useNavigate();
 
+  // ✅ Dynamic stats state
+  const [stats,setStats] = useState({
+    total_students:0,
+    total_states:0,
+    total_centers:0,
+    total_enrollments:0
+  });
+
   useEffect(() => {
 
     const token = localStorage.getItem("token");
 
     if (!token) {
       navigate("/login");
+      return;
     }
+
+    // ✅ API CALL
+    axios.get(
+      "http://localhost:5000/api/superadmin/dashboard",
+      {
+        headers:{
+          Authorization:`Bearer ${token}`
+        }
+      }
+    )
+    .then(res=>{
+      setStats(res.data);
+    })
+    .catch(err=>{
+      console.log(err);
+    });
 
   }, [navigate]);
 
-  const stats = [
-    { title: "Total Students", value: 1250, icon: <FaUsers />, color: "#4a6cf7" },
-    { title: "Total Schools", value: 35, icon: <FaSchool />, color: "#28a745" },
-    { title: "Total States", value: 8, icon: <FaMapMarkedAlt />, color: "#ff7b00" },
-    { title: "Total Enrollments", value: 1320, icon: <FaClipboardCheck />, color: "#7f5af0" }
+  // ✅ Dynamic Stats
+  const statsData = [
+    { title: "Total Students", value: stats.total_students, icon: <FaUsers />, color: "#4a6cf7" },
+    { title: "Total Schools", value: stats.total_centers, icon: <FaSchool />, color: "#28a745" },
+    { title: "Total States", value: stats.total_states, icon: <FaMapMarkedAlt />, color: "#ff7b00" },
+    { title: "Total Enrollments", value: stats.total_enrollments, icon: <FaClipboardCheck />, color: "#7f5af0" }
   ];
 
   const monthlyData = [
@@ -74,7 +102,7 @@ const SuperAdminDashboard = () => {
 
       {/* STATS */}
       <div className="stats-grid">
-        {stats.map((item, index) => (
+        {statsData.map((item, index) => (
           <div key={index} className="stat-card">
             <div className="stat-icon" style={{ background: item.color }}>
               {item.icon}
@@ -124,12 +152,18 @@ const SuperAdminDashboard = () => {
         <h3>Activity Logs</h3>
         <ul>
           {activityLogs.map((log, index) => (
-            <li key={index}>
-              <strong>{log.action}</strong>
-              <span style={{ float: "right", color: "#888" }}>
-                {log.time}
-              </span>
-            </li>
+            <li
+  key={index}
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "12px"
+  }}
+>
+  <strong>{log.action}</strong>
+  <span style={{ color: "#888", whiteSpace: "nowrap" }}>{log.time}</span>
+</li>
           ))}
         </ul>
       </div>

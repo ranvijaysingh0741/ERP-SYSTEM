@@ -5,7 +5,7 @@
 }
 
 .profile-card {
-  background: white;
+  background: rgb(244, 247, 251);
   width: 800px;
   padding: 30px;
   border-radius: 15px;
@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #4a6cc2;
   padding-bottom: 20px;
   margin-bottom: 20px;
 }
@@ -42,7 +42,7 @@
 }
 
 .detail-box {
-  background: #f9f9fb;
+  background: #e1eff6;
   padding: 15px;
   border-radius: 10px;
   display: flex;

@@ -11,52 +11,49 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async () => {
+ const handleLogin = async () => {
+  try {
+    const res = await axios.post("http://localhost:5000/api/auth/login", {
+      email,
+      password
+    });
 
-    try {
+    console.log("LOGIN RESPONSE:", res.data);
 
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        email: email,
-        password: password
-      });
-      console.log("LOGIN RESPONSE:", res.data);
+    const token = res.data.token;
+    const role = res.data.role;
 
-      const token = res.data.token;
-      const role = res.data.role;
+    // ✅ TOKEN + ROLE SAVE
+    localStorage.setItem("token", token);
+    localStorage.setItem("role", role);
 
-      localStorage.setItem("token", token);
-      localStorage.setItem("role", role);
+    // ✅ ROLE BASED REDIRECT (FIXED ROUTES)
+    if (role === "student") {
+      navigate("/student/dashboard");
+    } 
+    else if (role === "center") {
+      navigate("/center/dashboard");
+    } 
+    else if (role === "admin") {
+      navigate("/admin/dashboard"); // ⭐ FIX
+    } 
+    else if (role === "superadmin") {
+      navigate("/superadmin");
+    } 
+    else {
+      alert("Unknown role");
+    }
 
-      // Role Based Redirect
+  } catch (error) {
 
-      if (role === "student") {
-        navigate("/student");
-      }
+    console.log("LOGIN ERROR:", error.response?.data);
 
-      else if (role === "center") {
-        navigate("/center");
-      }
+    const message =
+      error.response?.data?.message || "Invalid email or password";
 
-      else if (role === "admin") {
-        navigate("/admin");
-      }
-
-      else if (role === "super_admin") {
-        navigate("/superadmin");
-      }
-
-    } catch (error) {
-
-  console.log("LOGIN ERROR:", error.response?.data);
-
-  const message =
-    error.response?.data?.message || "Invalid email or password";
-
-  alert(message);
-
-}
-
-  };
+    alert(message);
+  }
+};
 
   return (
     <div className="login-wrapper">

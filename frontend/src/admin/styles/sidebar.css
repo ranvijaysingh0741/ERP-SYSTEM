@@ -5,7 +5,8 @@
 .sidebar {
   width: 270px;
   height: 100vh;
-  background: linear-gradient(180deg, #9e6b68, #587b63);
+  background: linear-gradient(180deg, #1e3c72, #133878);
+
   color: rgb(236, 220, 220);
   padding: 25px 20px;
   display: flex;
@@ -48,7 +49,7 @@
   gap: 15px; 
    margin-left: 40px; 
      margin-bottom: 50px; 
-     font-size: 12px;     
+     font-size: 13px;     
      font-weight: 800;   /* space between text & logo */
 } 
 
@@ -87,7 +88,8 @@
   color: white;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 15px;
+  font-size: 18px;
+   font-weight: 500;
 }
 
 /* Hover effect */
@@ -150,7 +152,7 @@
   display: block;
   padding: 6px 0;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.85);
   transition: 0.3s;

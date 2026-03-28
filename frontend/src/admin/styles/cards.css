@@ -6,7 +6,7 @@
 
 /* CARD */
 .card {
-  background: rgb(230, 224, 224);
+  background: rgb(237, 239, 240);
   padding: 20px;
   border-radius: 14px;
   flex: 1;
@@ -49,7 +49,7 @@
 }
 
 .gender-info p {
-  color: gray;
+  color: rgb(148, 143, 143);
   font-size: 14px;
 }
 
@@ -62,11 +62,11 @@
 }
 
 .boys {
-  background: #9bd3f7;
+  background: #77b0d4;
 }
 
 .girls {
-  background: #de9f9f;
+  background: #f4aae5;
 }
 
 /* INFO CARDS */

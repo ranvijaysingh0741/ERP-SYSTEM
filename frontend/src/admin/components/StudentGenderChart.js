@@ -25,7 +25,7 @@ const StudentGenderChart = () => {
     datasets: [
       {
         data: [boys, girls],
-        backgroundColor: ["#1d4964", "#5e3e5c"],
+        backgroundColor: ["#95cef1", "#5e3e5c"],
         borderWidth: 0,
         cutout: "70%"
       }

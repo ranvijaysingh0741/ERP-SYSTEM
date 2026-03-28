@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom"; // ✅ yaha add
 import {
   FaTachometerAlt,
   FaUserGraduate,
   FaChevronDown,
-  FaFileAlt,
   FaCertificate,
   FaMoneyBill,
   FaCog,
@@ -17,36 +16,39 @@ import {
 import "../styles/sidebar.css";
 
 const Sidebar = () => {
+
   const [openIndex, setOpenIndex] = useState(null);
+
+  const navigate = useNavigate(); // ✅ yaha hona chahiye
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   const menuItems = [
     {
       title: "Dashboard",
       icon: <FaTachometerAlt />,
-      path: "/"
+      path: "/admin/dashboard"
     },
     {
       title: "Students",
       icon: <FaUserGraduate />,
       submenu: [
-        { title: "All Students", path: "/all-students" },
-        { title: "Student Detail", path: "/student-detail" }
+        { title: "All Students", path: "/admin/all-students" },
+        { title: "Student Detail", path: "/admin/student-detail" }
       ]
-    },
-    {
-      title: "Exams",
-      icon: <FaFileAlt />,
-      path: "/exams"
     },
     {
       title: "Certificates",
       icon: <FaCertificate />,
-      path: "/certificates"
+      path: "/admin/certificates"
     },
     {
       title: "Fees",
       icon: <FaMoneyBill />,
-      path: "/fees"
+      path: "/admin/fees"
     },
     {
       title: "Admissions",
@@ -69,16 +71,11 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
 
-      {/* LOGO SECTION */}
-    <div className="admin-header">
-  <h2>Board of Vocational and Skill Higher Secondary Education</h2>
-
-  <img
-    src={logo}
-    alt="Board Logo"
-    className="board-logo"
-  />
-</div>
+      {/* LOGO */}
+      <div className="admin-header">
+        <h2>Board of Vocational and Skill Higher Secondary Education</h2>
+        <img src={logo} alt="Board Logo" className="board-logo" />
+      </div>
 
       {/* MENU */}
       <ul className="menu">
@@ -137,7 +134,7 @@ const Sidebar = () => {
       </ul>
 
       {/* LOGOUT */}
-      <div className="logout">
+      <div className="logout" onClick={handleLogout}>
         <FaSignOutAlt />
         <span>Logout</span>
       </div>

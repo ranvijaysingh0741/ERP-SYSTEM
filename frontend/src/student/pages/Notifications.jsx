@@ -1,32 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import API from "../../api/axios";
 
 export default function Notifications() {
-  const [notifications, setNotifications] = useState([
-    {
-      id: 1,
-      text: "Your admission has been approved.",
-      time: "Today, 10:30 AM",
-      read: false
-    },
-    {
-      id: 2,
-      text: "New timetable has been uploaded.",
-      time: "Yesterday, 4:15 PM",
-      read: false
-    },
-    {
-      id: 3,
-      text: "Document verification completed successfully.",
-      time: "12 Feb, 1:00 PM",
-      read: true
-    }
-  ]);
+
+  const [notifications, setNotifications] = useState([]);
+
+  useEffect(() => {
+
+    API.get("/student/notifications")
+      .then(res => {
+        setNotifications(res.data);
+      })
+      .catch(err => {
+        console.log("Notifications API error:", err);
+      });
+
+  }, []);
 
   const markAsRead = (id) => {
-    const updated = notifications.map((note) =>
-      note.id === id ? { ...note, read: true } : note
+
+    const updated = notifications.map(note =>
+      note.id === id ? { ...note, is_read: true } : note
     );
+
     setNotifications(updated);
+
   };
 
   return (
@@ -34,23 +32,29 @@ export default function Notifications() {
       <h2>Notifications</h2>
 
       <div style={styles.card}>
+
         {notifications.length === 0 ? (
           <p>No notifications</p>
         ) : (
+
           notifications.map((note) => (
+
             <div
               key={note.id}
               style={{
                 ...styles.notification,
-                background: note.read ? "#f4f6f9" : "#eaf3ff"
+                background: note.is_read ? "#f4f6f9" : "#eaf3ff"
               }}
             >
+
               <div>
-                <p style={{ margin: 0 }}>{note.text}</p>
-                <small style={{ color: "#777" }}>{note.time}</small>
+                <p style={{ margin: 0 }}>{note.message}</p>
+                <small style={{ color: "#777" }}>
+                  {note.created_at}
+                </small>
               </div>
 
-              {!note.read && (
+              {!note.is_read && (
                 <button
                   style={styles.btn}
                   onClick={() => markAsRead(note.id)}
@@ -58,9 +62,13 @@ export default function Notifications() {
                   Mark as read
                 </button>
               )}
+
             </div>
+
           ))
+
         )}
+
       </div>
     </div>
   );
@@ -70,11 +78,11 @@ const styles = {
   container: {
     padding: "20px",
     background: "#ffffff",
-    minHeight: "100vh"
+    minHeight: "10vh"
   },
 
   card: {
-    background: "#fff",
+    background: "#e9eaeb",
     padding: "20px",
     borderRadius: "10px",
     boxShadow: "0 2px 8px rgba(0,0,0,0.08)"

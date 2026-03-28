@@ -1,150 +1,96 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import AdminLayout from "../components/AdminLayout";
 import "../styles/admin.css";
+
+import {
+  getPendingStudents,
+  approveStudent,
+  rejectStudent
+} from "../../api/adminApi";
 
 const EnrollmentRequests = () => {
 
-  const predefinedReasons = [
-    "Incomplete Documents",
-    "Invalid ID Proof",
-    "Incorrect Personal Details",
-    "Fee Not Paid",
-    "Duplicate Application"
-  ];
+  const [requests, setRequests] = useState([]);
 
-  const [requests, setRequests] = useState([
-    {
-      id: 1,
-      name: "Rahul Sharma",
-      center: "Lucknow Center",
-      region: "Uttar Pradesh",
-      status: "Pending",
-      reason: ""
-    },
-    {
-      id: 2,
-      name: "Priya Verma",
-      center: "Kanpur Center",
-      region: "Uttar Pradesh",
-      status: "Pending",
-      reason: ""
+  // 🔥 LOAD DATA FROM DB
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = async () => {
+    try {
+      const res = await getPendingStudents();
+      setRequests(res.data);
+    } catch (err) {
+      console.error("Fetch error:", err);
     }
-  ]);
-
-  const handleApprove = (id) => {
-    setRequests(requests.map(req =>
-      req.id === id ? { ...req, status: "Approved", reason: "" } : req
-    ));
   };
 
-  const handleReject = (id, selectedReason, customReason) => {
-
-    const finalReason = customReason || selectedReason;
-
-    if (!finalReason) {
-      alert("Please select or write rejection reason");
-      return;
+  // ✅ APPROVE
+  const handleApprove = async (id) => {
+    try {
+      await approveStudent(id);
+      loadData(); // refresh
+    } catch (err) {
+      console.error(err);
     }
+  };
 
-    setRequests(requests.map(req =>
-      req.id === id
-        ? { ...req, status: "Rejected", reason: finalReason }
-        : req
-    ));
+  // ✅ REJECT
+  const handleReject = async (id) => {
+    const reason = prompt("Enter rejection reason:");
+    if (!reason) return;
+
+    try {
+      await rejectStudent(id, reason);
+      loadData();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
-    <div className="admin-page">
+    <AdminLayout>
+      <div className="admin-page">
 
-      <h2>Enrollment Requests</h2>
+        <h2>Enrollment Requests</h2>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Center</th>
-            <th>Region</th>
-            <th>Status</th>
-            <th>Reason</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {requests.map(req => (
-            <tr key={req.id}>
-              <td>{req.name}</td>
-              <td>{req.center}</td>
-              <td>{req.region}</td>
-              <td>
-                <span className={`status ${req.status.toLowerCase()}`}>
-                  {req.status}
-                </span>
-              </td>
-              <td>{req.reason}</td>
-              <td>
-
-                {req.status === "Pending" && (
-                  <RejectApproveSection
-                    req={req}
-                    predefinedReasons={predefinedReasons}
-                    onApprove={handleApprove}
-                    onReject={handleReject}
-                  />
-                )}
-
-              </td>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Enrollment</th>
+              <th>Center</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
+          </thead>
 
-      </table>
+          <tbody>
+            {requests.map((req) => (
+              <tr key={req.id}>
+                <td>{req.id}</td>
+                <td>{req.enrollment_no}</td>
+                <td>{req.center_id}</td>
+                <td>{req.status}</td>
 
-    </div>
-  );
-};
+                <td>
+                  <button onClick={() => handleApprove(req.id)}>
+                    Approve
+                  </button>
 
+                  <button onClick={() => handleReject(req.id)}>
+                    Reject
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
 
-/* ===== Separate Component for Clean Code ===== */
+        </table>
 
-const RejectApproveSection = ({ req, predefinedReasons, onApprove, onReject }) => {
-
-  const [selectedReason, setSelectedReason] = useState("");
-  const [customReason, setCustomReason] = useState("");
-
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-
-      <select
-        value={selectedReason}
-        onChange={(e) => setSelectedReason(e.target.value)}
-      >
-        <option value="">Select Reason</option>
-        {predefinedReasons.map((reason, index) => (
-          <option key={index} value={reason}>
-            {reason}
-          </option>
-        ))}
-      </select>
-
-      <input
-        type="text"
-        placeholder="Or write custom reason"
-        value={customReason}
-        onChange={(e) => setCustomReason(e.target.value)}
-      />
-
-      <div style={{ display: "flex", gap: "5px" }}>
-        <button onClick={() => onApprove(req.id)}>Approve</button>
-        <button
-          onClick={() =>
-            onReject(req.id, selectedReason, customReason)
-          }
-        >
-          Reject
-        </button>
       </div>
-
-    </div>
+    </AdminLayout>
   );
 };
 

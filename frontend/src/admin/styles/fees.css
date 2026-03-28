@@ -59,7 +59,7 @@
 }
 
 .session-select select:focus {
-  border-color: #8a6066;
+  border-color: #427096 important!;
   box-shadow: 0 0 0 3px rgba(138, 96, 102, 0.2);
 }
 
@@ -75,7 +75,7 @@
   border: none;
   cursor: pointer;
   color: white;
-  background: linear-gradient(135deg, #8b5e3c, #6b705c);
+  background: #1c5081 !important;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
@@ -87,6 +87,12 @@
 
 .primary-btn:active {
   transform: scale(0.95);
+}
+
+.fee-details-page {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
 }
 
 /* =============================== */

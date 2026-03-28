@@ -12,24 +12,27 @@ import "../styles/cards.css";
 
 ChartJS.register(ArcElement, Tooltip);
 
-const DashboardCards = () => {
+const DashboardCards = ({ stats }) => {
 
-  /* ===== STUDENT DATA ===== */
-  const boys = 45414;
-  const girls = 40270;
+  const boys = stats.boys || 0;
+  const girls = stats.girls || 0;
 
   const totalStudents = boys + girls;
 
-  const boysPercent = ((boys / totalStudents) * 100).toFixed(0);
-  const girlsPercent = ((girls / totalStudents) * 100).toFixed(0);
+  const boysPercent = totalStudents
+    ? ((boys / totalStudents) * 100).toFixed(0)
+    : 0;
 
-  /* ===== CHART DATA ===== */
+  const girlsPercent = totalStudents
+    ? ((girls / totalStudents) * 100).toFixed(0)
+    : 0;
+
   const genderData = {
     labels: ["Boys", "Girls"],
     datasets: [
       {
         data: [boys, girls],
-        backgroundColor: ["#e0a2a2", "#a2b59e"],
+        backgroundColor: ["#e8a5d4", "#91aeca"],
         borderWidth: 0,
         cutout: "75%"
       }
@@ -46,10 +49,8 @@ const DashboardCards = () => {
   return (
     <div className="cards-container">
 
-      {/* ========= STUDENT CARD ========= */}
       <div className="card student-card">
 
-        {/* HEADER */}
         <div className="student-header">
           <h3>Students</h3>
           <h2 className="total-students">
@@ -57,17 +58,15 @@ const DashboardCards = () => {
           </h2>
         </div>
 
-        {/* CHART */}
         <div className="chart-wrapper">
           <Doughnut data={genderData} options={genderOptions} />
 
           <div className="center-icon">
-            <FaMale color="#bbc7bb" size={22}/>
-            <FaFemale color="#dda5ad" size={22}/>
+            <FaMale color="#a0c7eb" size={22}/>
+            <FaFemale color="#e99de0" size={22}/>
           </div>
         </div>
 
-        {/* STATS */}
         <div className="gender-info">
 
           <div>

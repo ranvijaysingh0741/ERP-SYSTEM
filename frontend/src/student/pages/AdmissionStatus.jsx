@@ -1,4 +1,22 @@
+import { useEffect, useState } from "react";
+import API from "../../api/axios";
+
 export default function AdmissionStatus() {
+
+  const [student,setStudent] = useState({});
+
+  useEffect(()=>{
+
+    API.get("/student/status")
+    .then(res=>{
+      setStudent(res.data);
+    })
+    .catch(err=>{
+      console.log(err);
+    });
+
+  },[])
+
   return (
     <div style={styles.page}>
       <h2>My Status</h2>
@@ -6,25 +24,27 @@ export default function AdmissionStatus() {
       <div style={styles.card}>
         <table style={styles.table}>
           <tbody>
+
             <tr>
               <td style={styles.label}>Student Name</td>
-              <td>Ananya S.</td>
+              <td>{student.name}</td>
             </tr>
 
             <tr>
               <td style={styles.label}>Class</td>
-              <td>10th</td>
+              <td>{student.class}</td>
             </tr>
 
             <tr>
               <td style={styles.label}>Roll No.</td>
-              <td>23</td>
+              <td>{student.roll}</td>
             </tr>
 
             <tr>
               <td style={styles.label}>Section</td>
-              <td>A</td>
+              <td>{student.section}</td>
             </tr>
+
           </tbody>
         </table>
       </div>
@@ -33,10 +53,9 @@ export default function AdmissionStatus() {
 }
 
 const styles = {
+
   page: {
-    background: "#e6f0fa",   // light blue full width (change to #fff if you want full white)
-    minHeight: "100vh",
-    padding: "30px"
+    padding: "20px"
   },
 
   card: {
@@ -56,4 +75,5 @@ const styles = {
     padding: "12px 0",
     width: "40%"
   }
+
 };

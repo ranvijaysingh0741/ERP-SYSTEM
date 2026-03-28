@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import {
   FaChartPie,
   FaUserShield,
@@ -12,6 +13,15 @@ import {
 } from "react-icons/fa";
 
 const SuperAdminSidebar = () => {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    navigate("/login");
+  };
+
   return (
     <div className="super-sidebar">
 
@@ -20,37 +30,37 @@ const SuperAdminSidebar = () => {
       <ul className="sidebar-menu">
 
         <li>
-          <Link to="/">
+          <Link to="/superadmin">
             <FaChartPie /> Dashboard
           </Link>
         </li>
 
         <li>
-          <Link to="/admin-management">
+          <Link to="/superadmin/admin-management">
             <FaUserShield /> Admin Accounts
           </Link>
         </li>
 
         <li>
-          <Link to="/locations">
+          <Link to="/superadmin/locations">
             <FaMapMarkedAlt /> Locations
           </Link>
         </li>
 
         <li>
-          <Link to="/enrollment">   {/* FIXED */}
+          <Link to="/superadmin/enrollment">
             <FaClipboardList /> Enrollments
           </Link>
         </li>
 
         <li>
-          <Link to="/reports">
+          <Link to="/superadmin/reports">
             <FaChartBar /> Reports
           </Link>
         </li>
 
         <li>
-          <Link to="/activity-logs">
+          <Link to="/superadmin/activity-logs">
             <FaHistory /> Activity Logs
           </Link>
         </li>
@@ -60,11 +70,11 @@ const SuperAdminSidebar = () => {
       {/* ===== BOTTOM SECTION ===== */}
       <div className="sidebar-bottom">
 
-        <Link to="/profile">
+        <Link to="/superadmin/profile">
           <FaUserCircle /> Profile Settings
         </Link>
 
-        <div className="logout-btn">
+        <div className="logout-btn" onClick={handleLogout}>
           <FaSignOutAlt /> Logout
         </div>
 

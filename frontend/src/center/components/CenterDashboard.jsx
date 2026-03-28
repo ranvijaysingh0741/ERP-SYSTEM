@@ -1,334 +1,111 @@
-import { useState, useEffect } from "react";
-import { indiaData } from "../indiaData";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import CenterLayout from "./CenterLayout";
 
 export default function CenterDashboard() {
-
   const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("Draft");
-  const [adminNotified, setAdminNotified] = useState(false);
-
-  const [form, setForm] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    dob: "",
-    gender: "",
-    state: "",
-    district: "",
-    course: "",
-    admissionType: "Regular",
-  });
-
-  const [documents, setDocuments] = useState({});
-
-  const districts = indiaData[form.state] || [];
-
-  /* ================= AUTH CHECK ================= */
-
-  useEffect(() => {
-
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      navigate("/login");
-    }
-
-  }, [navigate]);
-
-  /* ================= FORM CHANGE ================= */
-
-  const handleChange = (e) => {
-
-    const { name, value } = e.target;
-
-    if (name === "state") {
-      setForm({ ...form, state: value, district: "" });
-    } else {
-      setForm({ ...form, [name]: value });
-    }
-
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
   };
-
-  /* ================= FILE CHANGE ================= */
-
-  const handleFileChange = (e) => {
-
-    const { name, files } = e.target;
-
-    setDocuments({
-      ...documents,
-      [name]: files[0],
-    });
-
-  };
-
-  /* ================= SUBMIT ================= */
-
-  const handleSubmit = async () => {
-
-    if (!form.fullName || !form.phone || !form.state) {
-      alert("Please fill required fields ⚠️");
-      return;
-    }
-
-    try {
-
-      setLoading(true);
-
-      const token = localStorage.getItem("token");
-
-      const formData = new FormData();
-
-      formData.append("full_name", form.fullName);
-      formData.append("email", form.email);
-      formData.append("phone", form.phone);
-      formData.append("dob", form.dob);
-      formData.append("gender", form.gender);
-      formData.append("state", form.state);
-      formData.append("district", form.district);
-      formData.append("course", form.course);
-      formData.append("admission_type", form.admissionType);
-
-      if (documents.marksheet) {
-        formData.append("marksheet", documents.marksheet);
-      }
-
-      if (documents.tc) {
-        formData.append("tc", documents.tc);
-      }
-
-      if (documents.idProof) {
-        formData.append("id_proof", documents.idProof);
-      }
-
-      if (documents.additional) {
-        formData.append("additional_doc", documents.additional);
-      }
-
-      await axios.post(
-        "http://localhost:5000/api/center/students",
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      setStatus("Pending Approval");
-      setAdminNotified(true);
-
-      alert("Student submitted successfully ✅");
-
-    } catch (err) {
-
-      console.log(err);
-      alert("Submission failed ❌");
-
-    }
-
-    setLoading(false);
-
-  };
-
-  /* ================= UI ================= */
 
   return (
-    <div className="min-h-screen bg-[#eef2ff] py-12 px-4">
+    <CenterLayout title="DASHBOARD">
+      <div className="flex flex-col items-center pt-1 pb-10">
+        <h2 className="text-[13px] md:text-[15px] font-extrabold tracking-[1.8px] text-[#111827] text-center uppercase mb-4">
+          Welcome Back Matoshree Computer Academy (Centre User)
+        </h2>
 
-      <div className="max-w-6xl mx-auto">
+        <div className="w-full max-w-[580px]">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="border border-slate-200 rounded-tl-[18px] overflow-hidden bg-white shadow-sm">
+              <div className="bg-[#1f4a97] text-white text-center py-3 text-[14px] font-bold tracking-[1px] uppercase">
+                Students
+              </div>
 
-        {/* Header */}
-
-        <div className="mb-12 text-center">
-          <h1 className="text-3xl font-bold text-gray-800">
-            Add New Student
-          </h1>
-          <p className="text-gray-500 mt-2">
-            Fill the details carefully before submission
-          </p>
-        </div>
-
-        {/* Student Information */}
-
-        <Section title="Student Information">
-
-          <Input label="Full Name" name="fullName" onChange={handleChange} />
-
-          <Input label="Email" name="email" type="email" onChange={handleChange} />
-
-          <Input label="Phone" name="phone" onChange={handleChange} />
-
-          <Input label="Date of Birth" name="dob" type="date" onChange={handleChange} />
-
-          <Select label="Gender" name="gender" onChange={handleChange}>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </Select>
-
-          <Select label="State" name="state" value={form.state} onChange={handleChange}>
-            {Object.keys(indiaData).map((state) => (
-              <option key={state} value={state}>
-                {state}
-              </option>
-            ))}
-          </Select>
-
-          <Select
-            label="District"
-            name="district"
-            value={form.district}
-            onChange={handleChange}
-            disabled={!form.state}
-          >
-            {districts.map((district) => (
-              <option key={district} value={district}>
-                {district}
-              </option>
-            ))}
-          </Select>
-
-          <Select label="Course" name="course" onChange={handleChange}>
-            <option value="B.Tech">B.Tech</option>
-            <option value="BCA">BCA</option>
-            <option value="BBA">BBA</option>
-            <option value="MCA">MCA</option>
-          </Select>
-
-          <Select label="Admission Type" name="admissionType" onChange={handleChange}>
-            <option value="Regular">Regular</option>
-            <option value="Scholarship">Scholarship</option>
-            <option value="Free Seat">Free Seat</option>
-          </Select>
-
-        </Section>
-
-        {/* Documents */}
-
-        <Section title="Mandatory Documents">
-
-          <FileInput label="Marksheet" name="marksheet" onChange={handleFileChange} />
-
-          <FileInput label="Transfer Certificate" name="tc" onChange={handleFileChange} />
-
-          <FileInput label="ID Proof" name="idProof" onChange={handleFileChange} />
-
-          <FileInput label="Additional Document" name="additional" onChange={handleFileChange} />
-
-        </Section>
-
-        {/* Status */}
-
-        <div className="bg-white rounded-xl p-6 shadow-md">
-
-          <div className="flex justify-between items-center">
-
-            <div>
-              Status :
-              <span className="ml-2 text-yellow-600 font-semibold">
-                {status}
-              </span>
+              <div
+                onClick={() => navigate("/center/add-student")}
+                className="cursor-pointer min-h-[110px] flex flex-col items-center justify-center bg-[#f9fbff] hover:bg-[#f2f7ff] transition"
+              >
+                <div className="mb-3">
+                  <div className="w-[40px] h-[40px] border-[2px] border-[#334155] rounded-[10px] flex items-center justify-center text-[26px] font-semibold text-[#1e293b] leading-none">
+                    +
+                  </div>
+                </div>
+                <p className="text-[13px] md:text-[14px] font-extrabold tracking-[1.5px] uppercase text-slate-900">
+                  Add Student
+                </p>
+              </div>
             </div>
 
-            {adminNotified && (
-              <div className="text-green-600">
-                Admin Notified 🔔
+            <div className="border border-slate-200 md:border-l-0 rounded-tr-[18px] overflow-hidden bg-white shadow-sm">
+              <div className="bg-[#3368bf] text-white text-center py-3 text-[14px] font-bold tracking-[1px] uppercase">
+                Download
               </div>
-            )}
 
+              <div className="cursor-pointer min-h-[110px] flex flex-col items-center justify-center bg-white hover:bg-slate-50 transition">
+                <div className="mb-3 text-[#1e293b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-[40px] h-[40px]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v1.2A1.8 1.8 0 0 0 6.8 20h10.4A1.8 1.8 0 0 0 19 18.2V17"
+                    />
+                  </svg>
+                </div>
+
+                <p className="text-[13px] md:text-[14px] font-extrabold tracking-[1.5px] uppercase text-slate-900">
+                  Download Files
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="flex justify-end mt-6">
-
-            <button
-              onClick={handleSubmit}
-              disabled={loading}
-              className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+          <div className="w-full md:w-[52%] mx-auto border border-slate-200 border-t-0 rounded-b-[18px] overflow-hidden bg-white shadow-sm">
+            <div
+              onClick={() => navigate("/center/students")}
+              className="cursor-pointer min-h-[100px] flex flex-col items-center justify-center bg-white hover:bg-slate-50 transition"
             >
-              {loading ? "Submitting..." : "Submit Application"}
-            </button>
+              <div className="mb-2 text-[#1e293b]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-[36px] h-[36px]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 7 12 4l8 3-8 3-8-3Zm0 5 8 3 8-3M4 17l8 3 8-3"
+                  />
+                </svg>
+              </div>
 
+              <p className="text-[13px] md:text-[14px] font-extrabold tracking-[1.5px] uppercase text-slate-900">
+                All Students List
+              </p>
+            </div>
           </div>
-
         </div>
 
+        <button
+          onClick={handleLogout}
+          className="mt-8 bg-[#f44a57] hover:bg-[#ea3847] text-white w-[82px] h-[82px] rounded-xl flex flex-col items-center justify-center font-extrabold text-[10px] tracking-[1.3px] uppercase transition shadow-sm"
+        >
+          <span className="text-[18px] leading-none mb-1">⏻</span>
+          <span>Log Out</span>
+        </button>
       </div>
-
-    </div>
-  );
-}
-
-/* ================= COMPONENTS ================= */
-
-function Section({ title, children }) {
-  return (
-    <div className="bg-white rounded-xl p-6 shadow-md mb-10">
-
-      <h2 className="text-lg font-semibold mb-6">
-        {title}
-      </h2>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {children}
-      </div>
-
-    </div>
-  );
-}
-
-function Input({ label, ...props }) {
-  return (
-    <div>
-      <label className="block text-sm mb-1">
-        {label}
-      </label>
-
-      <input
-        {...props}
-        className="w-full border rounded-lg px-3 py-2"
-      />
-    </div>
-  );
-}
-
-function Select({ label, children, ...props }) {
-  return (
-    <div>
-      <label className="block text-sm mb-1">
-        {label}
-      </label>
-
-      <select
-        {...props}
-        className="w-full border rounded-lg px-3 py-2"
-      >
-        <option value="">Select</option>
-        {children}
-      </select>
-
-    </div>
-  );
-}
-
-function FileInput({ label, name, onChange }) {
-  return (
-    <div>
-
-      <label className="block text-sm mb-1">
-        {label}
-      </label>
-
-      <input
-        type="file"
-        name={name}
-        onChange={onChange}
-        className="w-full border border-dashed rounded-lg px-3 py-2"
-      />
-
-    </div>
+    </CenterLayout>
   );
 }
