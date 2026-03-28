@@ -1,46 +1,53 @@
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 
-const studentController =
-require("../controllers/studentController");
+const studentController = require("../controllers/studentController");
+const authMiddleware = require("../middleware/authMiddleware");
 
-const authMiddleware =
-require("../middleware/authMiddleware");
+// ===============================
+// Protected Student Routes
+// ===============================
 
-const role = require("../middleware/roleMiddleware");
-
-// router.get(
-//   "/dashboard",
-//   authMiddleware,
-//   (req, res) => {
-
-//     res.json({
-//       message: "Protected Route Access",
-//       user: req.user
-//     });
-
-//   }
-// );
-
-
-// Protected Routes
-router.get("/status",
- authMiddleware,
- studentController.getStatus
+// Admission Status
+router.get(
+  "/status",
+  authMiddleware,
+  studentController.getStatus
 );
 
-router.get("/timetable",
- authMiddleware,
- studentController.getTimetable
+// Timetable
+router.get(
+  "/timetable",
+  authMiddleware,
+  studentController.getTimetable
 );
 
-router.get("/documents",
- authMiddleware,
- studentController.getDocuments
+// Documents
+router.get(
+  "/documents",
+  authMiddleware,
+  studentController.getDocuments
 );
 
-router.get("/notifications",
- authMiddleware,
- studentController.getNotifications
+// Notifications
+router.get(
+  "/notifications",
+  authMiddleware,
+  studentController.getNotifications
+);
+
+// Profile
+router.get(
+  "/profile",
+  authMiddleware,
+  studentController.getProfile
+);
+
+// Dashboard summary
+router.get(
+  "/dashboard",
+  authMiddleware,
+  studentController.getDashboard
 );
 
 module.exports = router;

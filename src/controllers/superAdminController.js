@@ -26,11 +26,11 @@ exports.getDashboard = async (req, res) => {
       await pool.query(`SELECT COUNT(*) FROM admissions`);
 
     res.json({
-      total_students: students.rows[0].count,
-      total_states: states.rows[0].count,
-      total_centers: centers.rows[0].count,
-      total_enrollments: admissions.rows[0].count
-    });
+  total_students: parseInt(students.rows[0].count),
+  total_states: parseInt(states.rows[0].count),
+  total_centers: parseInt(centers.rows[0].count),
+  total_enrollments: parseInt(admissions.rows[0].count)
+});
 
   } catch (err) {
     res.status(500).json(err.message);

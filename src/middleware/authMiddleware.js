@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
 
-  // Authorization Header
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
@@ -11,7 +10,6 @@ module.exports = (req, res, next) => {
     });
   }
 
-  // Bearer TOKEN
   const token = authHeader.split(" ")[1];
 
   try {
@@ -21,8 +19,7 @@ module.exports = (req, res, next) => {
       process.env.JWT_SECRET
     );
 
-    // attach user data
-    req.user = decoded;
+    req.user = decoded; // 🔥 IMPORTANT
 
     next();
 
@@ -31,4 +28,5 @@ module.exports = (req, res, next) => {
       message: "Invalid token"
     });
   }
+
 };

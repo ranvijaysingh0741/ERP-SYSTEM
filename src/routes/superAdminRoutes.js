@@ -4,7 +4,7 @@ const auth = require('../middleware/authMiddleware');
 const role = require('../middleware/roleMiddleware');
 const controller = require('../controllers/superAdminController');
 
-router.use(auth, role('superadmin'));
+router.use(auth, role('super_admin'));
 
 router.get('/dashboard', controller.getDashboard);
 

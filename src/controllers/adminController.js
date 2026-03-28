@@ -139,41 +139,73 @@ exports.rejectStudent = async(req,res)=>{
 // ==========================
 // 6️⃣ DASHBOARD STATS
 // ==========================
-exports.getDashboardStats=async(req,res)=>{
+exports.getDashboardStats = async (req, res) => {
 
- const client=await pool.connect();
+ const client = await pool.connect();
 
- try{
+ try {
 
-  await setUserContext(client,req.user.id);
+  await setUserContext(client, req.user.id);
 
-  const total=
-   await client.query(
-     `SELECT COUNT(*) FROM students`);
+  const students =
+   await client.query(`SELECT COUNT(*) FROM students`);
 
-  const pending=
-   await client.query(
-     `SELECT COUNT(*) FROM students
-      WHERE status='Pending'`);
+  const centers =
+   await client.query(`SELECT COUNT(DISTINCT center_id) FROM students`);
 
-  const approved=
-   await client.query(
-     `SELECT COUNT(*) FROM students
-      WHERE status='Approved'`);
+  const pending =
+   await client.query(`SELECT COUNT(*) FROM students WHERE status='Pending'`);
 
-  const rejected=
-   await client.query(
-     `SELECT COUNT(*) FROM students
-      WHERE status='Rejected'`);
+  const approved =
+   await client.query(`SELECT COUNT(*) FROM students WHERE status='Approved'`);
 
   res.json({
-   total:total.rows[0].count,
-   pending:pending.rows[0].count,
-   approved:approved.rows[0].count,
-   rejected:rejected.rows[0].count
+   students: Number(students.rows[0].count),
+   centers: Number(centers.rows[0].count),
+   pending: Number(pending.rows[0].count),
+   approved: Number(approved.rows[0].count)
   });
 
- }finally{
+ } catch(err){
+
+  console.error(err);
+  res.status(500).json({message:"Dashboard error"});
+
+ } finally {
+  client.release();
+ }
+};
+
+// ==========================
+// 7️⃣ ALL STUDENTS
+// ==========================
+
+exports.getAllStudents = async (req, res) => {
+
+ const client = await pool.connect();
+
+ try {
+
+  await setUserContext(client, req.user.id);
+
+  const result = await client.query(`
+    SELECT id,
+           enrollment_no,
+           center_id,
+           status,
+           created_at
+    FROM students
+    ORDER BY created_at DESC
+  `);
+
+  res.json(result.rows);
+
+ } catch (err) {
+
+  console.error(err);
+  res.status(500).json({ message: "Server error" });
+
+ } finally {
   client.release();
  }
 };

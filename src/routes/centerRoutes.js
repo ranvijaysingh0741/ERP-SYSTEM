@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
+
 const auth = require('../middleware/authMiddleware');
 const role = require('../middleware/roleMiddleware');
 const upload = require('../middleware/uploadMiddleware');
+
 const centerController = require('../controllers/centerController');
 
 
+// ================= ADD STUDENT =================
 router.post(
   '/add-student',
   auth,
@@ -20,8 +23,30 @@ router.post(
   centerController.addStudent
 );
 
-router.get('/my-students', auth, role('center'), centerController.getMyStudents);
 
-router.get('/status/:id', auth, role('center'), centerController.getStudentStatus);
+// ================= GET STUDENTS =================
+// 🔥 SAME API FRONTEND USE KAREGA
+router.get(
+  '/students',
+  auth,
+  role('center'),
+  centerController.getMyStudents
+);
+
+
+// ================= TRACK STATUS =================
+router.get(
+  '/status/:id',
+  auth,
+  role('center'),
+  centerController.getStudentStatus
+);
+
+router.get(
+  '/notifications',
+  auth,
+  role('center'),
+  centerController.getNotifications
+);
 
 module.exports = router;

@@ -1,50 +1,36 @@
-const router=require("express").Router();
+const router = require("express").Router();
 
-const auth=require("../middleware/authMiddleware");
-const role=require("../middleware/roleMiddleware");
+const auth = require("../middleware/authMiddleware");
+const role = require("../middleware/roleMiddleware");
 
-const adminController=require("../controllers/adminController");
+const adminController = require("../controllers/adminController");
 
-router.get(
- "/centers",
- auth,
- role("admin"),
- adminController.getMyCenters
-);
+/* DASHBOARD */
 
-router.get(
- "/pending",
- auth,
- role("admin"),
- adminController.getPendingStudents
-);
+router.get("/dashboard", auth, role("admin"), adminController.getDashboardStats);
 
-router.get(
- "/student/:id",
- auth,
- role("admin"),
- adminController.getStudentDetail
-);
+/* ALL STUDENTS */
 
-router.put(
- "/approve/:id",
- auth,
- role("admin"),
- adminController.approveStudent
-);
+router.get("/students", auth, role("admin"), adminController.getAllStudents);
 
-router.put(
- "/reject/:id",
- auth,
- role("admin"),
- adminController.rejectStudent
-);
+/* CENTERS */
 
-router.get(
- "/dashboard",
- auth,
- role("admin"),
- adminController.getDashboardStats
-);
+router.get("/centers", auth, role("admin"), adminController.getMyCenters);
 
-module.exports=router;
+/* PENDING STUDENTS */
+
+router.get("/pending", auth, role("admin"), adminController.getPendingStudents);
+
+/* STUDENT DETAIL */
+
+router.get("/student/:id", auth, role("admin"), adminController.getStudentDetail);
+
+/* APPROVE */
+
+router.put("/approve/:id", auth, role("admin"), adminController.approveStudent);
+
+/* REJECT */
+
+router.put("/reject/:id", auth, role("admin"), adminController.rejectStudent);
+
+module.exports = router;
