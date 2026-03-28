@@ -1,27 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
 /* =========================================
    TOP STRIP
 ========================================= */
-
 .top-strip {
-  background: linear-gradient(90deg, #1f3b73, #16305f);
-  padding: 8px 50px;
+  position: relative;
+  background: #1f407c;
+  height: 40px;
+  padding: 0 55px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* soft curved pattern on top strip */
+.top-strip::before,
+.top-strip::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.top-strip::before {
+  width: 320px;
+  height: 320px;
+  left: -80px;
+  top: -250px;
+}
+
+.top-strip::after {
+  width: 360px;
+  height: 360px;
+  right: 220px;
+  top: -285px;
 }
 
 .top-right {
+  position: relative;
+  z-index: 1;
   display: flex;
-  gap: 30px;
+  gap: 28px;
 }
 
 .top-right a {
   text-decoration: none;
   color: #ffffff;
-  font-size: 13px;
-  letter-spacing: 1px;
-  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  font-weight: 600;
   transition: 0.3s ease;
 }
 
@@ -30,70 +64,86 @@
 }
 
 .top-right a:hover {
-  color: #ffd700;
-}
-/* =========================================
-   LOGO SECTION
-========================================= */
-
-.logo-section {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.logo {
-  height: 65px;
-}
-
-/* text next to logo */
-
-.logo-text h5 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
-  color: #1f3b73;
-}
-
-.logo-text p {
-  margin: 0;
-  font-size: 14px;
-  color: #555;
-}
-
-/* prevent text from breaking layout */
-
-.logo-text {
-  max-width: 420px;
+  opacity: 0.85;
 }
 
 /* =========================================
    MAIN NAVBAR
 ========================================= */
-
 .navbar {
+  position: relative;
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 50px;
-  background: #ffffff;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  padding: 14px 52px;
+  background: #f9f9f9;
+  overflow: visible;
+  box-shadow: none;
+  min-height: 118px;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* blue geometric faded background */
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, transparent 0 42%, rgba(171, 188, 217, 0.22) 42% 58%, transparent 58%) 0% 0% / 170px 100% repeat-x,
+    linear-gradient(60deg, transparent 0 44%, rgba(171, 188, 217, 0.14) 44% 56%, transparent 56%) 70px 0 / 230px 100% repeat-x;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.logo-section,
+.nav-menu {
   position: relative;
-  z-index: 999;
+  z-index: 1;
+}
+
+/* =========================================
+   LOGO SECTION
+========================================= */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .logo {
-  height: 65px;
+  height: 58px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-text {
+  max-width: 330px;
+  line-height: 1.2;
+}
+
+.logo-text h5 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1f3b73;
+}
+
+.logo-text p {
+  margin: 0;
+  font-size: 13px;
+  color: #424242;
+  font-weight: 500;
+  line-height: 1.3;
 }
 
 /* =========================================
    MENU
 ========================================= */
-
 .nav-menu {
   list-style: none;
   display: flex;
-  gap: 40px;
+  gap: 34px;
   align-items: center;
   margin: 0;
   padding: 0;
@@ -101,56 +151,55 @@
 
 .nav-menu li {
   position: relative;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 1.2px;
+  letter-spacing: 2px;
+  color: #6c6c6c;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .nav-menu li a {
   text-decoration: none;
-  color: #2b2b2b;
+  color: #6c6c6c;
   transition: 0.3s ease;
-  padding: 10px 0;
+  padding: 8px 0;
   display: inline-block;
 }
 
-/* Hover underline animation */
-.nav-menu li a::after {
-  content: "";
-  display: block;
-  height: 2px;
-  width: 0%;
-  background: #1f3b73;
-  transition: 0.3s ease;
-  margin-top: 4px;
-}
-
-.nav-menu li a:hover::after {
-  width: 100%;
-}
-
-.nav-menu li a:hover {
+.nav-menu li:first-child a {
   color: #1f3b73;
+  font-weight: 700;
+}
+
+.nav-menu li a:hover,
+.nav-menu li:hover,
+.dropdown:hover {
+  color: #1f3b73;
+}
+
+/* remove underline effect from old design */
+.nav-menu li a::after {
+  display: none;
 }
 
 /* =========================================
    DROPDOWN
 ========================================= */
-
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 12px);
   left: 0;
-  background: #f8f9fc;
-  min-width: 260px;
-  padding: 25px 20px;
-  border-radius: 8px;
+  background: #ffffff;
+  min-width: 250px;
+  padding: 16px 18px;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-
+  gap: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+  border: 1px solid #ececec;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -160,18 +209,20 @@
 
 .dropdown-menu a {
   text-decoration: none;
-  color: #555;
-  font-size: 14px;
-  letter-spacing: 1px;
+  color: #555555;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: none;
   transition: 0.2s ease;
+  padding: 0;
 }
 
 .dropdown-menu a:hover {
   color: #1f3b73;
-  padding-left: 6px;
+  padding-left: 4px;
 }
 
-/* Show dropdown */
 .dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
@@ -181,46 +232,110 @@
 /* =========================================
    RESPONSIVE
 ========================================= */
+@media (max-width: 1280px) {
+  .navbar {
+    padding: 14px 28px;
+  }
+
+  .nav-menu {
+    gap: 22px;
+  }
+
+  .nav-menu li {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+
+  .logo-text {
+    max-width: 280px;
+  }
+
+  .logo-text p {
+    font-size: 12px;
+  }
+}
 
 @media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 20px;
+  }
+
   .nav-menu {
-    gap: 25px;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .top-strip {
+    padding: 0 20px;
   }
 }
 
 @media (max-width: 768px) {
+  .top-strip {
+    height: auto;
+    padding: 10px 16px;
+  }
+
+  .top-right {
+    gap: 18px;
+  }
+
+  .top-right a {
+    font-size: 11px;
+  }
 
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
+    padding: 16px;
+    min-height: auto;
+  }
+
+  .logo-section {
+    align-items: center;
+  }
+
+  .logo {
+    height: 48px;
+  }
+
+  .logo-text {
+    max-width: 220px;
+  }
+
+  .logo-text p {
+    font-size: 11px;
   }
 
   .nav-menu {
     flex-direction: column;
+    align-items: flex-start;
     width: 100%;
-    gap: 18px;
-    margin-top: 15px;
+    gap: 14px;
+    margin-top: 6px;
+  }
+
+  .nav-menu li {
+    font-size: 12px;
+    letter-spacing: 1.2px;
   }
 
   .dropdown-menu {
     position: static;
-    box-shadow: none;
-    padding: 10px 0;
-    transform: none;
     opacity: 1;
     visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 8px 0 0 12px;
+    gap: 10px;
+    min-width: 100%;
+    display: none;
   }
-}
-.dropdown-menu{
-opacity:0;
-visibility:hidden;
-transform:translateY(10px);
-transition:all 0.3s ease;
-}
 
-.nav-item:hover .dropdown-menu{
-opacity:1;
-visibility:visible;
-transform:translateY(0);
+  .dropdown:hover .dropdown-menu {
+    display: flex;
+  }
 }
