@@ -10,42 +10,37 @@ function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
- const handleLogin = async () => {
+const handleLogin = async () => {
   try {
-    const res = await axios.post("https://erp-backend-lrfi.onrender.com/api/auth/login", {
-      email,
-      password
-    });
+    const res = await axios.post(
+      "https://erp-backend-lrfi.onrender.com/api/auth/login",
+      {
+        email: email.toLowerCase().trim(),
+        password: password.trim()
+      }
+    );
 
     console.log("LOGIN RESPONSE:", res.data);
 
     const token = res.data.token;
     const role = res.data.role;
 
-    // ✅ TOKEN + ROLE SAVE
     localStorage.setItem("token", token);
     localStorage.setItem("role", role);
 
-    // ✅ ROLE BASED REDIRECT (FIXED ROUTES)
     if (role === "student") {
       navigate("/student/dashboard");
-    } 
-    else if (role === "center") {
+    } else if (role === "center") {
       navigate("/center/dashboard");
-    } 
-    else if (role === "admin") {
-      navigate("/admin/dashboard"); // ⭐ FIX
-    } 
-    else if (role === "superadmin") {
-      navigate("/superadmin");
-    } 
-    else {
+    } else if (role === "admin") {
+      navigate("/admin/dashboard");
+    } else if (role === "superadmin") {
+      navigate("/superadmin/dashboard");
+    } else {
       alert("Unknown role");
     }
 
   } catch (error) {
-
     console.log("LOGIN ERROR:", error.response?.data);
 
     const message =
