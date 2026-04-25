@@ -1,62 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
-/* =========================================
-   TOP STRIP
-========================================= */
 .top-strip {
   position: relative;
-  background: #1f407c;
-  height: 40px;
-  padding: 0 55px;
+  min-height: 42px;
+  padding: 0 52px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   overflow: hidden;
-  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(135deg, #193f86, #4d8dff);
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-/* soft curved pattern on top strip */
 .top-strip::before,
 .top-strip::after {
   content: "";
   position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
   pointer-events: none;
+  background: rgba(255, 255, 255, 0.10);
+  filter: blur(18px);
 }
 
 .top-strip::before {
-  width: 320px;
-  height: 320px;
-  left: -80px;
-  top: -250px;
+  width: 230px;
+  height: 230px;
+  left: -70px;
+  top: -170px;
 }
 
 .top-strip::after {
-  width: 360px;
-  height: 360px;
-  right: 220px;
-  top: -285px;
+  width: 260px;
+  height: 260px;
+  right: 18%;
+  top: -200px;
 }
 
 .top-right {
   position: relative;
   z-index: 1;
   display: flex;
-  gap: 28px;
+  gap: 14px;
+  align-items: center;
 }
 
 .top-right a {
-  text-decoration: none;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
   color: #ffffff;
+  text-decoration: none;
   font-size: 12px;
   letter-spacing: 0.8px;
-  font-weight: 600;
-  transition: 0.3s ease;
+  font-weight: 700;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .top-right a:visited {
@@ -64,163 +69,199 @@
 }
 
 .top-right a:hover {
-  opacity: 0.85;
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-2px);
 }
 
-/* =========================================
-   MAIN NAVBAR
-========================================= */
 .navbar {
   position: relative;
   z-index: 999;
+  min-height: 104px;
+  padding: 18px 52px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 52px;
-  background: #f9f9f9;
+  gap: 26px;
   overflow: visible;
-  box-shadow: none;
-  min-height: 118px;
-  font-family: "Montserrat", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(77, 141, 255, 0.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(255, 193, 7, 0.14), transparent 26%),
+    linear-gradient(135deg, #eef4ff 0%, #f9fbff 100%);
+  box-shadow: 0 12px 34px rgba(53, 92, 170, 0.10);
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-/* blue geometric faded background */
 .navbar::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(120deg, transparent 0 42%, rgba(171, 188, 217, 0.22) 42% 58%, transparent 58%) 0% 0% / 170px 100% repeat-x,
-    linear-gradient(60deg, transparent 0 44%, rgba(171, 188, 217, 0.14) 44% 56%, transparent 56%) 70px 0 / 230px 100% repeat-x;
-  opacity: 1;
+  width: 260px;
+  height: 260px;
+  right: -90px;
+  top: -150px;
+  border-radius: 50%;
+  background: rgba(25, 63, 134, 0.08);
+  filter: blur(30px);
   pointer-events: none;
 }
 
 .logo-section,
-.nav-menu {
+.nav-menu,
+.nav-toggle {
   position: relative;
   z-index: 1;
 }
 
-/* =========================================
-   LOGO SECTION
-========================================= */
 .logo-section {
   display: flex;
   align-items: center;
   gap: 14px;
+  min-width: 300px;
+}
+
+.logo-section > a {
+  display: inline-flex;
+  flex: 0 0 auto;
 }
 
 .logo {
-  height: 58px;
-  width: auto;
-  object-fit: contain;
+  width: 66px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(111, 145, 220, 0.18);
+  box-shadow: 0 12px 24px rgba(25, 63, 134, 0.14);
 }
 
 .logo-text {
-  max-width: 330px;
+  max-width: 360px;
   line-height: 1.2;
 }
 
 .logo-text h5 {
-  margin: 0;
-  font-size: 17px;
+  margin: 0 0 3px;
+  color: #193f86;
+  font-size: 18px;
   font-weight: 700;
-  color: #1f3b73;
+  letter-spacing: 1px;
 }
 
 .logo-text p {
   margin: 0;
-  font-size: 13px;
-  color: #424242;
-  font-weight: 500;
-  line-height: 1.3;
+  color: #34425e;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
-/* =========================================
-   MENU
-========================================= */
 .nav-menu {
   list-style: none;
   display: flex;
-  gap: 34px;
+  gap: 8px;
   align-items: center;
+  justify-content: flex-end;
   margin: 0;
-  padding: 0;
+  padding: 10px;
+  border: 1px solid rgba(111, 145, 220, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 14px 34px rgba(53, 92, 170, 0.11);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .nav-menu li {
   position: relative;
+  color: #4b556b;
   font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #6c6c6c;
-  text-transform: uppercase;
-  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   white-space: nowrap;
 }
 
-.nav-menu li a {
+.nav-menu li a,
+.dropdown-label {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px 14px 9px;
+  border-radius: 999px;
+  color: #4b556b;
   text-decoration: none;
-  color: #6c6c6c;
-  transition: 0.3s ease;
-  padding: 8px 0;
-  display: inline-block;
+  cursor: pointer;
+  transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease;
 }
 
-.nav-menu li:first-child a {
-  color: #1f3b73;
-  font-weight: 700;
+.dropdown-label::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.3s ease;
 }
 
+.nav-menu li:first-child a,
 .nav-menu li a:hover,
-.nav-menu li:hover,
-.dropdown:hover {
-  color: #1f3b73;
+.dropdown:hover .dropdown-label {
+  color: #193f86;
+  background: rgba(77, 141, 255, 0.10);
 }
 
-/* remove underline effect from old design */
-.nav-menu li a::after {
-  display: none;
+.dropdown:hover .dropdown-label::after {
+  transform: translateY(1px) rotate(225deg);
 }
 
-/* =========================================
-   DROPDOWN
-========================================= */
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 14px);
   left: 0;
-  background: #ffffff;
-  min-width: 250px;
-  padding: 16px 18px;
-  border-radius: 0;
+  min-width: 260px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
-  border: 1px solid #ececec;
+  gap: 6px;
+  border: 1px solid rgba(111, 145, 220, 0.14);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow:
+    0 18px 45px rgba(53, 92, 170, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: all 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
   z-index: 9999;
 }
 
 .dropdown-menu a {
-  text-decoration: none;
-  color: #555555;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: none;
-  transition: 0.2s ease;
-  padding: 0;
+  min-height: auto;
+  justify-content: flex-start;
+  padding: 11px 13px;
+  border-radius: 14px;
+  color: #4b556b;
+  font-size: 14px;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.dropdown-menu a::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4d8dff, #ffc107);
 }
 
 .dropdown-menu a:hover {
-  color: #1f3b73;
-  padding-left: 4px;
+  color: #193f86;
+  background: rgba(77, 141, 255, 0.10);
+  transform: translateX(3px);
 }
 
 .dropdown:hover .dropdown-menu {
@@ -229,113 +270,179 @@
   transform: translateY(0);
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+.nav-toggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid rgba(111, 145, 220, 0.18);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 12px 24px rgba(25, 63, 134, 0.14);
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 21px;
+  height: 2px;
+  border-radius: 999px;
+  background: #193f86;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 @media (max-width: 1280px) {
   .navbar {
-    padding: 14px 28px;
+    padding: 16px 28px;
+    gap: 18px;
   }
 
-  .nav-menu {
-    gap: 22px;
-  }
-
-  .nav-menu li {
-    font-size: 12px;
-    letter-spacing: 1.5px;
+  .logo-section {
+    min-width: 270px;
   }
 
   .logo-text {
-    max-width: 280px;
+    max-width: 270px;
   }
 
   .logo-text p {
     font-size: 12px;
+  }
+
+  .nav-menu li {
+    font-size: 12px;
+  }
+
+  .nav-menu li a,
+  .dropdown-label {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
 @media (max-width: 1024px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-    padding: 18px 20px;
-  }
-
-  .nav-menu {
-    flex-wrap: wrap;
-    gap: 18px;
-  }
-
   .top-strip {
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .top-strip {
-    height: auto;
-    padding: 10px 16px;
-  }
-
-  .top-right {
-    gap: 18px;
-  }
-
-  .top-right a {
-    font-size: 11px;
+    padding: 8px 20px;
   }
 
   .navbar {
-    padding: 16px;
     min-height: auto;
+    padding: 16px 20px;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   .logo-section {
-    align-items: center;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
-  .logo {
-    height: 48px;
-  }
-
-  .logo-text {
-    max-width: 220px;
-  }
-
-  .logo-text p {
-    font-size: 11px;
+  .nav-toggle {
+    display: inline-flex;
   }
 
   .nav-menu {
-    flex-direction: column;
-    align-items: flex-start;
+    order: 3;
     width: 100%;
-    gap: 14px;
-    margin-top: 6px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin-top: 4px;
+    border-radius: 24px;
+    padding: 12px;
   }
 
-  .nav-menu li {
-    font-size: 12px;
-    letter-spacing: 1.2px;
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-menu li a,
+  .dropdown-label {
+    width: 100%;
+    justify-content: space-between;
+    padding: 13px 14px 11px;
   }
 
   .dropdown-menu {
     position: static;
+    min-width: 100%;
+    margin-top: 6px;
+    padding: 8px 0 0 14px;
+    gap: 6px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
     opacity: 1;
     visibility: visible;
     transform: none;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-    padding: 8px 0 0 12px;
-    gap: 10px;
-    min-width: 100%;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     display: none;
   }
 
   .dropdown:hover .dropdown-menu {
     display: flex;
+  }
+
+  .dropdown-menu a {
+    background: rgba(255, 255, 255, 0.54);
+  }
+}
+
+@media (max-width: 768px) {
+  .top-strip {
+    justify-content: center;
+    padding: 8px 14px;
+  }
+
+  .top-right {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .top-right a {
+    flex: 1;
+    max-width: 170px;
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+
+  .navbar {
+    padding: 14px;
+  }
+
+  .logo {
+    width: 54px;
+    height: 54px;
+    border-radius: 15px;
+  }
+
+  .logo-text {
+    max-width: 230px;
+  }
+
+  .logo-text h5 {
+    font-size: 16px;
+  }
+
+  .logo-text p {
+    font-size: 11px;
   }
 }
