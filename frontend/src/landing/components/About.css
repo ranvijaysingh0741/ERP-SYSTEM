@@ -1,208 +1,264 @@
-/* ===== ABOUT SECTION - MATCH REFERENCE SCREENSHOT ===== */
-
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap');
 
 .about {
   position: relative;
-  padding: 70px 20px;
-  background: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 100px 20px;
+  background:
+    radial-gradient(circle at top left, rgba(77, 141, 255, 0.18), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255, 193, 7, 0.16), transparent 28%),
+    linear-gradient(135deg, #eef4ff 0%, #dbe7ff 45%, #f9fbff 100%);
   overflow: hidden;
   font-family: 'Josefin Sans', sans-serif;
 }
 
-/* light background shapes outside card */
 .about::before,
 .about::after {
   content: "";
   position: absolute;
-  background: rgba(198, 186, 170, 0.28);
+  border-radius: 50%;
   z-index: 0;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  filter: blur(30px);
 }
 
 .about::before {
-  width: 360px;
-  height: 360px;
-  left: -70px;
-  top: 20px;
-  transform: rotate(-18deg);
+  width: 260px;
+  height: 260px;
+  background: rgba(25, 63, 134, 0.10);
+  top: -60px;
+  left: -60px;
 }
 
 .about::after {
-  width: 420px;
-  height: 420px;
-  right: -90px;
-  bottom: -20px;
-  transform: rotate(10deg);
+  width: 320px;
+  height: 320px;
+  background: rgba(255, 193, 7, 0.12);
+  right: -100px;
+  bottom: -100px;
 }
 
-/* main box */
 .about-container {
   position: relative;
-  width: 100%;
-  max-width: 1240px;
-  background: #eef1f7;
-  padding: 65px 55px 45px;
-  text-align: center;
-  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
   z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 38px;
+  align-items: stretch;
 }
 
-/* large faded circular watermark shapes */
-.about-container::before,
-.about-container::after {
+.about-left,
+.about-right {
+  position: relative;
+}
+
+.about-left {
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 30px;
+  padding: 44px 38px;
+  box-shadow: 0 20px 60px rgba(41, 72, 152, 0.10);
+}
+
+.about-right {
+  display: flex;
+}
+
+.about-card {
+  width: 100%;
+  background: linear-gradient(145deg, #ffffff, #f5f9ff);
+  border-radius: 30px;
+  padding: 42px 34px;
+  box-shadow:
+    0 18px 45px rgba(53, 92, 170, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(111, 145, 220, 0.14);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
   content: "";
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+  top: -80px;
+  right: -80px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(77, 141, 255, 0.18), transparent 70%);
+  border-radius: 50%;
 }
 
-.about-container::before {
-  background:
-    radial-gradient(circle at 10% 18%, rgba(88, 116, 185, 0.10) 0 180px, transparent 181px),
-    radial-gradient(circle at 28% 82%, rgba(88, 116, 185, 0.10) 0 170px, transparent 171px),
-    radial-gradient(circle at 58% 16%, rgba(88, 116, 185, 0.10) 0 160px, transparent 161px),
-    radial-gradient(circle at 72% 78%, rgba(88, 116, 185, 0.10) 0 185px, transparent 186px),
-    radial-gradient(circle at 92% 12%, rgba(88, 116, 185, 0.10) 0 170px, transparent 171px),
-    radial-gradient(circle at 50% 110%, rgba(88, 116, 185, 0.10) 0 220px, transparent 221px);
-}
-
-.about-container::after {
-  background:
-    radial-gradient(circle at 18% 54%, rgba(88, 116, 185, 0.07) 0 120px, transparent 121px),
-    radial-gradient(circle at 42% 40%, rgba(88, 116, 185, 0.07) 0 130px, transparent 131px),
-    radial-gradient(circle at 64% 58%, rgba(88, 116, 185, 0.07) 0 130px, transparent 131px),
-    radial-gradient(circle at 86% 74%, rgba(88, 116, 185, 0.07) 0 120px, transparent 121px);
-}
-
-.about-container > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* heading */
-.about-title {
-  margin: 0 0 18px;
-  font-size: 30px;
-  line-height: 1.2;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #193f86;
-  text-transform: uppercase;
-}
-
-.title-line {
+.about-badge {
   display: inline-block;
+  padding: 10px 18px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #193f86, #4d8dff);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 25px rgba(25, 63, 134, 0.18);
+}
+
+.about-title {
+  margin: 0;
+  font-size: 40px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #173875;
+}
+
+.about-title span {
+  display: block;
+  color: #4d8dff;
 }
 
 .about-divider {
-  width: 64%;
-  height: 2px;
-  margin: 10px auto 4px;
-  background: #d2d2d2;
+  width: 110px;
+  height: 5px;
+  margin: 20px 0 22px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #193f86, #4d8dff, #ffc107);
 }
 
-.about-stars {
-  font-size: 22px;
-  line-height: 1;
+.about-lead {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #34425e;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.about-points {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.about-point {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(77, 141, 255, 0.12);
+  border-radius: 20px;
+  padding: 18px 18px 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-point:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(25, 63, 134, 0.10);
+}
+
+.about-point h4 {
+  margin: 0 0 8px;
+  font-size: 20px;
   color: #193f86;
-  letter-spacing: 4px;
   font-weight: 700;
-  margin-bottom: 18px;
 }
 
-/* paragraph text */
-.about p {
-  margin: 0 auto 22px;
-  max-width: 1160px;
-  font-size: 18px;
-  line-height: 1.45;
-  color: #111111;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-/* remove old styles effect */
-.about h2,
-.about h3 {
+.about-point p {
   margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4b556b;
+  font-weight: 500;
 }
 
-/* optional button styling if you keep button below */
+.about-card p {
+  margin: 0 0 18px;
+  font-size: 17px;
+  line-height: 1.85;
+  color: #2f2f2f;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
+}
+
 .contact-btn {
-  margin-top: 18px;
-  background: #193f86;
-  color: #ffffff;
+  margin-top: 8px;
+  background: linear-gradient(135deg, #193f86, #4d8dff);
+  color: white;
   border: none;
-  padding: 12px 28px;
+  padding: 15px 32px;
+  border-radius: 999px;
   font-size: 14px;
   font-weight: 700;
+  letter-spacing: 0.8px;
   cursor: pointer;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: 0.3s ease;
+  box-shadow: 0 12px 26px rgba(25, 63, 134, 0.22);
+  transition: all 0.3s ease;
 }
 
 .contact-btn:hover {
-  background: #102d63;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 30px rgba(25, 63, 134, 0.28);
 }
 
-/* hide wave because screenshot doesn't have it */
-.about-wave {
+.about-wave,
+.about-stars,
+.title-line {
   display: none;
 }
 
-/* responsive */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .about-container {
-    padding: 45px 28px 30px;
+    grid-template-columns: 1fr;
   }
 
   .about-title {
-    font-size: 24px;
+    font-size: 32px;
   }
 
-  .about-divider {
-    width: 78%;
-  }
-
-  .about p {
-    font-size: 16px;
-    line-height: 1.5;
+  .about-lead {
+    font-size: 18px;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .about {
-    padding: 40px 12px;
+    padding: 70px 14px;
   }
 
-  .about-container {
-    padding: 30px 18px 20px;
+  .about-left,
+  .about-card {
+    padding: 28px 20px;
+    border-radius: 22px;
   }
 
   .about-title {
-    font-size: 20px;
-    letter-spacing: 1px;
-  }
-
-  .about-stars {
-    font-size: 18px;
-    letter-spacing: 3px;
+    font-size: 26px;
   }
 
   .about-divider {
-    width: 90%;
+    width: 85px;
+    height: 4px;
+    margin: 16px 0 18px;
   }
 
-  .about p {
+  .about-lead {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .about-point h4 {
+    font-size: 18px;
+  }
+
+  .about-point p,
+  .about-card p {
     font-size: 15px;
-    line-height: 1.55;
-    margin-bottom: 18px;
+    line-height: 1.75;
+  }
+
+  .contact-btn {
+    width: 100%;
+    padding: 14px 24px;
   }
 }
