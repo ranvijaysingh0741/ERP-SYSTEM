@@ -2,43 +2,110 @@ import React from "react";
 import "./CentreEnquiry.css";
 import logo from "../assets/logo.jpeg";
 
+const centreBenefits = [
+  "Academic support for Secondary and Senior Secondary learners",
+  "Guidance for admissions, documentation, and student verification",
+  "Updates for notices, assignments, examinations, and academic calendars",
+];
+
 function CentreEnquiry() {
   return (
-    <div className="centre-page">
-      {/* HEADER SECTION */}
-      <div className="centre-header">
-        <h1>TELL US ABOUT YOUR CENTRE</h1>
-        <p>Fill your contact details. We will contact you soon..</p>
-      </div>
-
-      {/* FORM CARD */}
-      <div className="centre-card">
-        <div className="centre-logo">
-          <img src={logo} alt="Board Logo" />
+    <main className="centre-page">
+      <div className="centre-container">
+        <div className="centre-header">
+          <span className="centre-badge">Centre Partnership</span>
+          <h1>Tell Us About Your Centre</h1>
+          <p>
+            Share your institution details with us. Our academic coordination
+            team will review your enquiry and contact you for the next steps.
+          </p>
         </div>
 
-        <form className="centre-form">
-          <label>Centre Name</label>
-          <input type="text" placeholder="Name" />
+        <div className="centre-layout">
+          <aside className="centre-info">
+            <div className="centre-logo">
+              <img src={logo} alt="Board Logo" />
+            </div>
 
-          <label>Centre Email ID</label>
-          <input type="email" placeholder="Email Id" />
+            <h2>Become an Academic Support Centre</h2>
+            <p>
+              Partner with BVSHSE to support learners through accessible,
+              skill-oriented, and student-friendly education services.
+            </p>
 
-          <label>Contact Number</label>
-          <input type="text" placeholder="8000000000" />
+            <div className="centre-benefits">
+              {centreBenefits.map((benefit) => (
+                <span key={benefit}>{benefit}</span>
+              ))}
+            </div>
+          </aside>
 
-          <label>Message</label>
-          <textarea placeholder="About you?" rows="5"></textarea>
+          <section className="centre-card">
+            <div className="centre-card-heading">
+              <h2>Centre Enquiry Form</h2>
+              <p>Fields marked with * are required.</p>
+            </div>
 
-          <div className="captcha-box">
-            <div className="captcha-code">3X90F2</div>
-            <input type="text" placeholder="Enter CAPTCHA" />
-          </div>
+            <form className="centre-form">
+              <div className="form-grid">
+                <div className="form-field">
+                  <label htmlFor="centreName">Centre Name *</label>
+                  <input id="centreName" type="text" placeholder="Enter centre name" />
+                </div>
 
-          <button type="submit">SUBMIT</button>
-        </form>
+                <div className="form-field">
+                  <label htmlFor="coordinatorName">Coordinator Name *</label>
+                  <input
+                    id="coordinatorName"
+                    type="text"
+                    placeholder="Enter coordinator name"
+                  />
+                </div>
+
+                <div className="form-field">
+                  <label htmlFor="centreEmail">Centre Email ID *</label>
+                  <input id="centreEmail" type="email" placeholder="name@example.com" />
+                </div>
+
+                <div className="form-field">
+                  <label htmlFor="contactNumber">Contact Number *</label>
+                  <input id="contactNumber" type="tel" placeholder="Enter mobile number" />
+                </div>
+
+                <div className="form-field">
+                  <label htmlFor="city">City / District</label>
+                  <input id="city" type="text" placeholder="Enter city or district" />
+                </div>
+
+                <div className="form-field">
+                  <label htmlFor="state">State</label>
+                  <input id="state" type="text" placeholder="Enter state" />
+                </div>
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  placeholder="Tell us about your institution, available facilities, and expected student support."
+                  rows="5"
+                ></textarea>
+              </div>
+
+              <div className="captcha-box">
+                <div>
+                  <label htmlFor="captcha">Verification Code</label>
+                  <div className="captcha-code">3X90F2</div>
+                </div>
+                <input id="captcha" type="text" placeholder="Enter CAPTCHA" />
+              </div>
+
+              <button type="submit">Submit Enquiry</button>
+            </form>
+          </section>
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 
