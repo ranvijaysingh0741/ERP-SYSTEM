@@ -1,158 +1,164 @@
 import React from "react";
+import "./CoursePage.css";
+
+const documents = [
+  "Class 10 pass certificate",
+  "Passport size photographs",
+  "Valid ID proof",
+  "Date of birth certificate",
+  "Admission form with required undertaking",
+];
+
+const coreSubjects = [
+  { subject: "Language I", marks: "100", duration: "3 Hours" },
+  { subject: "Language II", marks: "100", duration: "3 Hours" },
+  { subject: "Stream subject", marks: "100", duration: "3 Hours" },
+];
+
+const streams = [
+  {
+    title: "Science Stream",
+    subjects: ["Physics", "Chemistry", "Mathematics / Biology"],
+  },
+  {
+    title: "Commerce Stream",
+    subjects: ["Business Studies", "Accountancy", "Economics / Mathematics"],
+  },
+  {
+    title: "Humanities / Arts Stream",
+    subjects: ["History", "Sociology", "Geography / Economics / Philosophy"],
+  },
+];
+
+const additionalSubjects = [
+  "Information Technology",
+  "Physical Education",
+  "Yoga",
+  "Drawing & Painting",
+  "Music",
+  "Dance",
+  "Agriculture",
+  "Home Science",
+  "Computer Science",
+];
 
 function Class12() {
   return (
-    <div className="class-page">
-      <div className="page-hero">
-        <h1>SENIOR SECONDARY (CLASS-12th)</h1>
+    <main className="class-page">
+      <div className="class-container">
+        <header className="page-hero">
+          <span className="course-badge">Senior Secondary Level</span>
+          <h1>Class 12 Senior Secondary Programme</h1>
+          <p>
+            Senior Secondary School Certificate Examination for learners moving
+            toward higher education, professional study, and career pathways.
+          </p>
+        </header>
+
+        <section className="course-summary">
+          <article className="summary-card">
+            <strong>SSSCE</strong>
+            <span>Certificate Examination</span>
+          </article>
+          <article className="summary-card">
+            <strong>3</strong>
+            <span>Major academic streams</span>
+          </article>
+          <article className="summary-card">
+            <strong>100</strong>
+            <span>Marks per subject</span>
+          </article>
+        </section>
+
+        <section className="page-content">
+          <div className="content-block">
+            <h2>About The Programme</h2>
+            <p>
+              SSSCE stands for Senior Secondary School Certificate Examination
+              equivalent to Class 12. The examination is conducted according to
+              the syllabus prescribed by the board, and successful learners are
+              awarded a certificate of qualification.
+            </p>
+          </div>
+
+          <div className="content-grid">
+            <div className="content-block">
+              <h2>Documents Required</h2>
+              <ul>
+                {documents.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="content-block highlight-block">
+              <h2>Programme Pathways</h2>
+              <p>
+                Students can choose academic subjects by stream and add
+                vocational or skill-focused subjects based on interest and
+                eligibility.
+              </p>
+            </div>
+          </div>
+
+          <div className="content-block table-card">
+            <h2>Core Examination Scheme</h2>
+            <div className="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>Subject</th>
+                    <th>Max Marks</th>
+                    <th>Duration</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {coreSubjects.map((item, index) => (
+                    <tr key={item.subject}>
+                      <td>{index + 1}</td>
+                      <td>{item.subject}</td>
+                      <td>{item.marks}</td>
+                      <td>{item.duration}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="content-block">
+            <h2>Subject Scheme By Stream</h2>
+            <div className="stream-grid">
+              {streams.map((stream) => (
+                <article className="stream-card" key={stream.title}>
+                  <h3>{stream.title}</h3>
+                  <ul>
+                    {stream.subjects.map((subject) => (
+                      <li key={subject}>{subject}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="content-block">
+            <h2>Additional Subject List</h2>
+            <div className="subject-tags">
+              {additionalSubjects.map((subject) => (
+                <span key={subject}>{subject}</span>
+              ))}
+            </div>
+          </div>
+
+          <p className="note">
+            Practical, internal, and multiple-choice components may apply as
+            prescribed by the board for specific subjects.
+          </p>
+        </section>
       </div>
-
-      <div className="page-content">
-        <h2>About Senior Secondary School Examination</h2>
-        <p>
-          SSSCE stands for Senior Secondary School Certificate Examination
-          (Class 12). The examinations are conducted twice a year in accordance
-          with the syllabus prescribed by the Board. After passing the
-          examination, a certificate of qualification is awarded.
-        </p>
-
-        <h2>Documents Required for Class-12th Admission</h2>
-        <ul>
-          <li>10th Class Pass Certificate</li>
-          <li>Passport Size Photos</li>
-          <li>ID Proof</li>
-          <li>Admission Form with Notary Stamp</li>
-        </ul>
-
-        <h2>The Scheme of Senior Secondary Examination</h2>
-
-        <table>
-          <thead>
-            <tr>
-              <th>S.No</th>
-              <th>Subject</th>
-              <th>Max Marks</th>
-              <th>Duration</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Language I</td>
-              <td>100</td>
-              <td>3 Hours</td>
-            </tr>
-
-            <tr>
-              <td>2</td>
-              <td>Language II</td>
-              <td>100</td>
-              <td>3 Hours</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h2>Subject Scheme (By Stream)</h2>
-
-        <h3>Science Stream (Non-Medical)</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td>Physics</td>
-              <td>60+20+20</td>
-              <td>3 Hours</td>
-            </tr>
-            <tr>
-              <td>Chemistry</td>
-              <td>60+20+20</td>
-              <td>3 Hours</td>
-            </tr>
-            <tr>
-              <td>Mathematics</td>
-              <td>80+20</td>
-              <td>3 Hours</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Science Stream (Medical)</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td>Physics</td>
-              <td>60+20+20</td>
-              <td>3 Hours</td>
-            </tr>
-            <tr>
-              <td>Chemistry</td>
-              <td>60+20+20</td>
-              <td>3 Hours</td>
-            </tr>
-            <tr>
-              <td>Biology</td>
-              <td>60+20+20</td>
-              <td>3 Hours</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Commerce Stream</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td>Business Studies</td>
-              <td>80+20</td>
-              <td>3 Hours</td>
-            </tr>
-            <tr>
-              <td>Accountancy</td>
-              <td>80+20</td>
-              <td>3 Hours</td>
-            </tr>
-            <tr>
-              <td>Economics / Mathematics</td>
-              <td>80+20</td>
-              <td>3 Hours</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Humanities / Arts Stream</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td>History</td>
-              <td>80+20</td>
-              <td>3 Hours</td>
-            </tr>
-            <tr>
-              <td>Sociology</td>
-              <td>80+20</td>
-              <td>3 Hours</td>
-            </tr>
-            <tr>
-              <td>Geography / Economics / Philosophy</td>
-              <td>80+20</td>
-              <td>3 Hours</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h2>Additional Subject List</h2>
-        <ul>
-          <li>Information Technology</li>
-          <li>Physical Education</li>
-          <li>Yoga</li>
-          <li>Drawing & Painting</li>
-          <li>Music</li>
-          <li>Dance</li>
-          <li>Agriculture</li>
-          <li>Home Science</li>
-          <li>Computer Science</li>
-        </ul>
-      </div>
-    </div>
+    </main>
   );
 }
 
