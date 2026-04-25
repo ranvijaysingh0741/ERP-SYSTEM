@@ -1,9 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.jpeg";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
+const navItems = [
+  { label: "Home", to: "/" },
+  {
+    label: "About Us",
+    links: [
+      { label: "Board Profile", to: "/about" },
+      { label: "Message from Chairman", to: "/message-from-chairman" },
+      { label: "Mission and Vision", to: "/mission-vision" },
+    ],
+  },
+  {
+    label: "Programmes",
+    links: [
+      { label: "Upper Primary Level", to: "/upper-primary" },
+      { label: "Secondary Level", to: "/secondary" },
+      { label: "Sr. Secondary Level", to: "/senior-secondary" },
+      { label: "Skills & Vocational Level", to: "/skills" },
+    ],
+  },
+  {
+    label: "Notices",
+    links: [
+      { label: "Academic Notice", to: "/academic-notices" },
+      { label: "Public Notice", to: "/public-notices" },
+      { label: "Time Table", to: "/timetable" },
+    ],
+  },
+  {
+    label: "Result & Verification",
+    links: [
+      { label: "Result", to: "/result" },
+      { label: "Email Verification", to: "/email-verification" },
+      { label: "Postal Verification", to: "/postal-verification" },
+    ],
+  },
+  { label: "Contact", to: "/contact" },
+];
+
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <>
       {/* TOP BAR */}
@@ -19,56 +61,49 @@ function Navbar() {
       {/* MAIN NAVBAR */}
       <nav className="navbar">
         <div className="logo-section">
-          <img src={logo} alt="Board Logo" className="logo" />
-          <h5>Board of Vocational and Skills Higher Secondary Education</h5>
-          <p></p>
+          <Link to="/" onClick={closeMenu}>
+            <img src={logo} alt="Board Logo" className="logo" />
+          </Link>
+          <div className="logo-text">
+            <h5>BVSHSE</h5>
+            <p>Board of Vocational and Skills Higher Secondary Education</p>
+            <p>Bhopal, Madhya Pradesh</p>
+          </div>
         </div>
-        
-        <ul className="nav-menu">
-          <li>
-            <Link to="/">HOME</Link>
-          </li>
 
-          <li className="dropdown">
-            ABOUT US ▼
-            <div className="dropdown-menu">
-              <Link to="/about">Board Profile</Link>
-              <Link to="/message-from-chairman">Message from Chairman</Link>
-              <Link to="/mission-vision">Mission and Vision</Link>
-            </div>
-          </li>
+        <button
+          className={`nav-toggle ${menuOpen ? "open" : ""}`}
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
 
-          <li className="dropdown">
-            PROGRAMMES ▼
-            <div className="dropdown-menu">
-              <Link to="/upper-primary">UpperPrimary Level</Link>
-              <Link to="/secondary">Secondary Level</Link>
-              <Link to="/senior-secondary">Sr. Secondary Level</Link>
-              <Link to="/skills">Skills & Vocational Level</Link>
-            </div>
-          </li>
-
-          <li className="dropdown">
-            NOTICES ▼
-            <div className="dropdown-menu">
-              <Link to="/academic-notices">Academic Notice</Link>
-              <Link to="/public-notices">Public Notice</Link>
-              <Link to="/timetable">Time Table</Link>
-            </div>
-          </li>
-
-          <li className="dropdown">
-            RESULT & VERIFICATION ▼
-            <div className="dropdown-menu">
-              <Link to="/result">Result</Link>
-              <Link to="/email-verification">Email Verification</Link>
-              <Link to="/postal-verification">Postal Verification</Link>
-            </div>
-          </li>
-
-          <li>
-            <Link to="/contact">CONTACT</Link>
-          </li>
+        <ul className={`nav-menu ${menuOpen ? "show" : ""}`}>
+          {navItems.map((item) => (
+            <li className={item.links ? "dropdown" : ""} key={item.label}>
+              {item.to ? (
+                <Link to={item.to} onClick={closeMenu}>
+                  {item.label}
+                </Link>
+              ) : (
+                <>
+                  <span className="dropdown-label">{item.label}</span>
+                  <div className="dropdown-menu">
+                    {item.links.map((link) => (
+                      <Link to={link.to} onClick={closeMenu} key={link.label}>
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+            </li>
+          ))}
         </ul>
       </nav>
     </>
