@@ -1,57 +1,68 @@
 import React from "react";
 import "./MissionVision.css";
 
+const goals = [
+  "Provide inclusive academic opportunities for learners across communities.",
+  "Support students in building education and career goals with confidence.",
+  "Promote skill-oriented learning for higher education and employment.",
+  "Deliver transparent academic and administrative support services.",
+  "Encourage knowledge, responsibility, discipline, and lifelong learning.",
+];
+
 function MissionVision() {
   return (
-    <section className="mission-page">
-      {/* Banner */}
-      <div className="mission-banner">
-        <h1>MISSION AND VISION</h1>
-      </div>
-
-      {/* Content Card */}
+    <main className="mission-page">
       <div className="mission-container">
-        <div className="mission-card">
-          <h2>MISSION AND VISION</h2>
-
-          <p className="quote">
-            “To achieve national distinction for creativity, innovation, and
-            excellence.”
-          </p>
-
+        <header className="mission-header">
+          <span className="mission-badge">Our Direction</span>
+          <h1>Mission And Vision</h1>
           <p>
-            Hundreds of people work behind the Board of Vocational and Skills
-            Higher Secondary Education ensuring that it fulfills all mandates
-            set down by the mission and vision.
+            BVSHSE works to make school education accessible, purposeful, and
+            skill-focused for learners preparing for a stronger future.
           </p>
+        </header>
 
-          <ul>
-            <li>
-              Our primary aim is to move forward the frontiers of human
-              knowledge and enrich and elevate the citizens of the state, the
-              nation, and the world.
-            </li>
-            <li>
-              The board teaches students how to develop education and career
-              goals, decision-making skills needed to manage their professional
-              and academic pursuits.
-            </li>
-            <li>
-              The students of the board will have clarity of purpose and solid
-              decision-making abilities to be confident and competitive.
-            </li>
-            <li>
-              Providing the academic and administrative services and facilities
-              needed to facilitate research excellence and knowledge transfer.
-            </li>
-            <li>
-              Ensuring that research activities are exploited and disseminated
-              for the benefit of society and the economy.
-            </li>
-          </ul>
-        </div>
+        <section className="mission-card">
+          <div className="mission-intro">
+            <h2>Creativity, Innovation, And Excellence</h2>
+            <p>
+              Our mission is to help students gain knowledge, clarity, and
+              practical skills while supporting academic growth through flexible
+              learning pathways.
+            </p>
+          </div>
+
+          <div className="mission-grid">
+            <article>
+              <span>Mission</span>
+              <h3>Accessible Education</h3>
+              <p>
+                To provide student-friendly academic programmes that support
+                learners from different backgrounds and learning needs.
+              </p>
+            </article>
+
+            <article>
+              <span>Vision</span>
+              <h3>Future Ready Learners</h3>
+              <p>
+                To build confident, responsible, and skilled learners prepared
+                for higher studies, employment, and social contribution.
+              </p>
+            </article>
+          </div>
+
+          <div className="mission-goals">
+            <h2>Core Objectives</h2>
+            <ul>
+              {goals.map((goal) => (
+                <li key={goal}>{goal}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
       </div>
-    </section>
+    </main>
   );
 }
 
