@@ -1,75 +1,86 @@
 import React from "react";
+import "./PostalVerification.css";
+
+const requirements = [
+  "Application on plain paper or official letterhead",
+  "Enrollment number, roll number, certificate number, class, and session",
+  "Self-attested photocopy of marksheet or certificate",
+  "Clear postal address, phone number, and email ID",
+];
+
+const processSteps = [
+  "Prepare the application with complete student and document details.",
+  "Attach self-attested document photocopies for verification.",
+  "Send the application by Speed Post or Registered Post only.",
+  "Allow the verification desk time to review and dispatch the response.",
+];
 
 const PostalVerification = () => {
   return (
-    <div className="verification-page">
-      <div className="verification-container">
-        <h1>Postal Verification</h1>
-
-        <div className="verification-card">
-          <h2>For Postal Verification</h2>
-
+    <main className="postal-page">
+      <div className="postal-container">
+        <header className="postal-header">
+          <span className="postal-badge">Verification Desk</span>
+          <h1>Postal Verification</h1>
           <p>
-            Anyone can apply for verification of original / photocopy of
-            documents like detail mark sheet / certificate etc. issued by
-            Vidarbha Madhyamik Shiksha Mandal, Nagpur.
+            Apply by post for verification of academic certificates, marksheets,
+            and related student records issued by the board.
           </p>
+        </header>
 
-          <p>
-            Students / Companies / Organisations / Agencies / Government
-            Departments / Embassies who would like to verify the authenticity of
-            academic documents may follow the procedure below:
-          </p>
+        <section className="postal-card">
+          <div className="postal-intro">
+            <h2>Postal Document Verification Procedure</h2>
+            <p>
+              Students, organisations, agencies, government departments, and
+              employers may request verification of academic documents by
+              submitting complete details through registered postal channels.
+            </p>
+          </div>
 
-          <ul className="verification-list">
-            <li>
-              Write an application for verification on simple paper/letterhead
-              mentioning Enrollment Number, Roll Number, Certificate Number,
-              Class & Session. Attach self-attested photocopies.
-            </li>
+          <div className="postal-grid">
+            <article className="postal-panel">
+              <h3>Required Information</h3>
+              <ul>
+                {requirements.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
 
-            <li>
-              Send a Demand Draft of Rs. 1000/- (Non-refundable) for each
-              document in favour of "Vidarbha Board of Secondary Education"
-              payable at Nagpur.
-            </li>
+            <article className="postal-panel fee-panel">
+              <h3>Fee & Timeline</h3>
+              <p>
+                Verification fee and postal charges should be submitted as per
+                official board instructions. Normal verification processing may
+                take up to 30 working days after complete documents are
+                received.
+              </p>
+            </article>
+          </div>
 
-            <li>
-              Add Rs. 100/- postal charges (India) and Rs. 1000/- for outside
-              India.
-            </li>
-
-            <li>
-              Verification charges for Central/State Government Departments are
-              free.
-            </li>
-
-            <li>Normal verification period is 30 days.</li>
-
-            <li>
-              Mention your postal address and phone number clearly in the
-              application.
-            </li>
-
-            <li>
-              Send completed application through SPEED POST or Registered Post
-              only (Courier not accepted).
-            </li>
-          </ul>
+          <div className="postal-steps">
+            {processSteps.map((step, index) => (
+              <div className="postal-step" key={step}>
+                <strong>{index + 1}</strong>
+                <span>{step}</span>
+              </div>
+            ))}
+          </div>
 
           <div className="address-box">
-            <h3>Address Details:</h3>
+            <h3>Postal Address</h3>
             <p>
               The Secretary,
               <br />
-              Vidarbha Madhyamik Shiksha Mandal,
+              Board of Vocational and Skills Higher Secondary Education,
               <br />
-              Ramtek, Nagpur – 441106 (Maharashtra)
+              Bhopal, Madhya Pradesh - 462016
             </p>
           </div>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 };
 
