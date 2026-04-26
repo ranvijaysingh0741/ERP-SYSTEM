@@ -1,58 +1,80 @@
 import React from "react";
 import "./Timetable.css";
 
+const timetables = [
+  { id: 1, session: "May 2025", type: "Latest", file: "/files/may-2025.pdf" },
+  { id: 2, session: "December 2024", type: "Archive", file: "/files/december-2024.pdf" },
+  { id: 3, session: "May 2024", type: "Archive", file: "/files/may-2024.pdf" },
+  { id: 4, session: "October 2023", type: "Archive", file: "/files/october-2023.pdf" },
+  { id: 5, session: "April 2023", type: "Archive", file: "/files/april-2023.pdf" },
+  { id: 6, session: "October 2022", type: "Archive", file: "/files/october-2022.pdf" },
+  { id: 7, session: "April 2022", type: "Archive", file: "/files/april-2022.pdf" },
+  { id: 8, session: "October 2021", type: "Archive", file: "/files/october-2021.pdf" },
+  { id: 9, session: "April 2021", type: "Archive", file: "/files/april-2021.pdf" },
+  { id: 10, session: "October 2020", type: "Archive", file: "/files/october-2020.pdf" },
+  { id: 11, session: "April 2020", type: "Archive", file: "/files/april-2020.pdf" },
+  { id: 12, session: "October 2019", type: "Archive", file: "/files/october-2019.pdf" },
+  { id: 13, session: "April 2019", type: "Archive", file: "/files/april-2019.pdf" },
+  { id: 14, session: "October 2018", type: "Archive", file: "/files/october-2018.pdf" },
+  { id: 15, session: "April 2018", type: "Archive", file: "/files/april-2018.pdf" },
+];
+
 const Timetable = () => {
-  const timetables = [
-    { id: 1, title: "April 2013", file: "/files/april-2013.pdf" },
-    { id: 2, title: "October 2013", file: "/files/october-2013.pdf" },
-    { id: 3, title: "April 2014", file: "/files/april-2014.pdf" },
-    { id: 4, title: "October 2014", file: "/files/october-2014.pdf" },
-    { id: 5, title: "April 2015", file: "/files/april-2015.pdf" },
-    { id: 6, title: "October 2015", file: "/files/october-2015.pdf" },
-    { id: 7, title: "April 2016", file: "/files/april-2016.pdf" },
-    { id: 8, title: "October 2016", file: "/files/october-2016.pdf" },
-    { id: 9, title: "April 2017", file: "/files/april-2017.pdf" },
-    { id: 10, title: "October 2017", file: "/files/october-2017.pdf" },
-    { id: 11, title: "April 2018", file: "/files/april-2018.pdf" },
-    { id: 12, title: "October 2018", file: "/files/october-2018.pdf" },
-    { id: 13, title: "April 2019", file: "/files/april-2019.pdf" },
-    { id: 14, title: "October 2019", file: "/files/october-2019.pdf" },
-    { id: 15, title: "April 2020", file: "/files/april-2020.pdf" },
-    { id: 16, title: "October 2020", file: "/files/october-2020.pdf" },
-    { id: 17, title: "April 2021", file: "/files/april-2021.pdf" },
-    { id: 18, title: "October 2021", file: "/files/october-2021.pdf" },
-    { id: 19, title: "April 2022", file: "/files/april-2022.pdf" },
-    { id: 20, title: "October 2022", file: "/files/october-2022.pdf" },
-    { id: 21, title: "April 2023", file: "/files/april-2023.pdf" },
-    { id: 22, title: "October 2023", file: "/files/october-2023.pdf" },
-    { id: 23, title: "May 2024", file: "/files/may-2024.pdf" },
-    { id: 24, title: "December 2024", file: "/files/december-2024.pdf" },
-    { id: 25, title: "May 2025", file: "/files/may-2025.pdf" },
-  ];
-
   return (
-    <section className="timetable-page">
+    <main className="timetable-page">
       <div className="timetable-container">
-        <h1 className="timetable-title">TIME TABLE</h1>
+        <header className="timetable-header">
+          <span className="timetable-badge">Exam Desk</span>
+          <h1 className="timetable-title">Time Table</h1>
+          <p>
+            Download examination schedules for current and previous sessions.
+            Students should check the latest timetable before preparing travel
+            or examination plans.
+          </p>
+        </header>
 
-        <div className="timetable-card">
-          <h2>Time Table Records</h2>
+        <section className="timetable-summary">
+          <article>
+            <strong>{timetables.length}</strong>
+            <span>Records available</span>
+          </article>
+          <article>
+            <strong>May 2025</strong>
+            <span>Latest session</span>
+          </article>
+          <article>
+            <strong>PDF</strong>
+            <span>Download format</span>
+          </article>
+        </section>
+
+        <section className="timetable-card">
+          <div className="timetable-card-heading">
+            <h2>Time Table Records</h2>
+            <span>Updated archive</span>
+          </div>
 
           <div className="table-wrapper">
             <table className="timetable-table">
               <thead>
                 <tr>
-                  <th>S.NO</th>
-                  <th>SESSION</th>
-                  <th>DOWNLOAD</th>
+                  <th>S.No.</th>
+                  <th>Session</th>
+                  <th>Type</th>
+                  <th>Download</th>
                 </tr>
               </thead>
 
               <tbody>
                 {timetables.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.id}</td>
-                    <td>{item.title}</td>
+                  <tr key={item.session}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <strong>{item.session}</strong>
+                    </td>
+                    <td>
+                      <span className="session-chip">{item.type}</span>
+                    </td>
                     <td>
                       <a
                         href={item.file}
@@ -61,7 +83,7 @@ const Timetable = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        DOWNLOAD
+                        Download
                       </a>
                     </td>
                   </tr>
@@ -69,9 +91,9 @@ const Timetable = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </section>
       </div>
-    </section>
+    </main>
   );
 };
 
