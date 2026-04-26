@@ -1,82 +1,121 @@
 import React from "react";
-import "./CoursePage.css";
+import "./UpperPrimary.css";
+
+const documents = [
+  "Previous class report card",
+  "Passport size photographs",
+  "Birth certificate",
+  "Transfer certificate if applicable",
+  "Valid ID proof",
+];
+
+const examScheme = [
+  { subject: "Language I", marks: "100", duration: "3 Hours" },
+  { subject: "Language II", marks: "100", duration: "3 Hours" },
+  { subject: "Mathematics", marks: "100", duration: "3 Hours" },
+  { subject: "Science", marks: "100", duration: "3 Hours" },
+  { subject: "Social Science", marks: "100", duration: "3 Hours" },
+];
+
+const learningGoals = [
+  "Build reading, writing, and communication confidence",
+  "Strengthen mathematical and scientific thinking",
+  "Prepare learners for Secondary level academic progression",
+];
 
 function UpperPrimary() {
   return (
-    <div className="course-page">
+    <main className="upper-page">
+      <div className="upper-container">
+        <header className="upper-hero">
+          <span className="upper-badge">Upper Primary Level</span>
+          <h1>Upper Primary Programme Class 8</h1>
+          <p>
+            A foundational academic programme for learners preparing to enter
+            Secondary education with stronger subject understanding and study
+            habits.
+          </p>
+        </header>
 
-      {/* HERO */}
-      <div className="course-hero">
-        <h1>UPPER PRIMARY (CLASS-8th)</h1>
+        <section className="upper-summary">
+          <article>
+            <strong>Class 8</strong>
+            <span>Upper Primary examination level</span>
+          </article>
+          <article>
+            <strong>5</strong>
+            <span>Core academic subjects</span>
+          </article>
+          <article>
+            <strong>3 Hours</strong>
+            <span>Standard paper duration</span>
+          </article>
+        </section>
+
+        <section className="upper-card">
+          <div className="upper-block">
+            <h2>About Upper Primary Education</h2>
+            <p>
+              The Upper Primary Examination corresponds to Class 8 and forms a
+              strong academic foundation for Secondary education. It helps
+              students strengthen core concepts before entering Class 10 level
+              studies.
+            </p>
+          </div>
+
+          <div className="upper-grid">
+            <div className="upper-block">
+              <h2>Documents Required</h2>
+              <ul>
+                {documents.map((document) => (
+                  <li key={document}>{document}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="upper-block upper-highlight">
+              <h2>Learning Goals</h2>
+              <ul>
+                {learningGoals.map((goal) => (
+                  <li key={goal}>{goal}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="upper-block">
+            <h2>Scheme Of Upper Primary Examination</h2>
+            <div className="upper-table-wrap">
+              <table className="upper-table">
+                <thead>
+                  <tr>
+                    <th>S.No.</th>
+                    <th>Subject</th>
+                    <th>Max Marks</th>
+                    <th>Duration</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {examScheme.map((item, index) => (
+                    <tr key={item.subject}>
+                      <td>{index + 1}</td>
+                      <td>{item.subject}</td>
+                      <td>{item.marks}</td>
+                      <td>{item.duration}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p className="upper-note">
+            Students should keep all admission documents ready before submitting
+            the application form.
+          </p>
+        </section>
       </div>
-
-      <div className="course-wrapper">
-
-        <h2>ABOUT UPPER PRIMARY EDUCATION (CLASS-8TH)</h2>
-
-        <p>
-          The Upper Primary Examination corresponds to Class 8th and forms
-          a strong academic foundation for Secondary education.
-        </p>
-
-        <h3>DOCUMENT REQUIRED FOR (CLASS-8TH) ADMISSION</h3>
-
-        <ul>
-          <li>Previous Class Report Card</li>
-          <li>Passport Size Photographs</li>
-          <li>Birth Certificate</li>
-          <li>Transfer Certificate (if applicable)</li>
-          <li>ID Proof</li>
-        </ul>
-
-        <h2>SCHEME OF UPPER PRIMARY EXAMINATION</h2>
-
-        <table>
-          <thead>
-            <tr>
-              <th>S.NO.</th>
-              <th>SUBJECT</th>
-              <th>MAX. MARKS</th>
-              <th>DURATION</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Language I</td>
-              <td>100</td>
-              <td>3 hours</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Language II</td>
-              <td>100</td>
-              <td>3 hours</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Mathematics</td>
-              <td>100</td>
-              <td>3 hours</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Science</td>
-              <td>100</td>
-              <td>3 hours</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Social Science</td>
-              <td>100</td>
-              <td>3 hours</td>
-            </tr>
-          </tbody>
-        </table>
-
-      </div>
-
-    </div>
+    </main>
   );
 }
 
