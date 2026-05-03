@@ -1,6 +1,5 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   FaChartPie,
   FaUserShield,
@@ -9,78 +8,81 @@ import {
   FaChartBar,
   FaHistory,
   FaUserCircle,
-  FaSignOutAlt
+  FaSignOutAlt,
+  FaBars,
+  FaTimes
 } from "react-icons/fa";
 
 const SuperAdminSidebar = () => {
+  const [showSidebar, setShowSidebar] = useState(false);
 
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-    navigate("/login");
-  };
+  const closeSidebar = () => setShowSidebar(false);
 
   return (
-    <div className="super-sidebar">
+    <>
+      <button
+        className="mobile-menu-btn"
+        onClick={() => setShowSidebar(!showSidebar)}
+      >
+        {showSidebar ? <FaTimes /> : <FaBars />}
+      </button>
 
-      <h2 className="logo">Super Admin</h2>
+      {showSidebar && (
+        <div className="sidebar-overlay" onClick={closeSidebar}></div>
+      )}
 
-      <ul className="sidebar-menu">
+      <div className={`super-sidebar ${showSidebar ? "show-sidebar" : ""}`}>
+        <h2 className="logo">Super Admin</h2>
 
-        <li>
-          <Link to="/superadmin">
-            <FaChartPie /> Dashboard
+        <ul className="sidebar-menu">
+          <li>
+            <Link to="/" onClick={closeSidebar}>
+              <FaChartPie /> Dashboard
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/admin-management" onClick={closeSidebar}>
+              <FaUserShield /> Admin Accounts
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/locations" onClick={closeSidebar}>
+              <FaMapMarkedAlt /> Locations
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/enrollment" onClick={closeSidebar}>
+              <FaClipboardList /> Enrollments
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/reports" onClick={closeSidebar}>
+              <FaChartBar /> Reports
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/activity-logs" onClick={closeSidebar}>
+              <FaHistory /> Activity Logs
+            </Link>
+          </li>
+        </ul>
+
+        <div className="sidebar-bottom">
+          <Link to="/profile" onClick={closeSidebar}>
+            <FaUserCircle /> Profile Settings
           </Link>
-        </li>
 
-        <li>
-          <Link to="/superadmin/admin-management">
-            <FaUserShield /> Admin Accounts
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/superadmin/locations">
-            <FaMapMarkedAlt /> Locations
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/superadmin/enrollment">
-            <FaClipboardList /> Enrollments
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/superadmin/reports">
-            <FaChartBar /> Reports
-          </Link>
-        </li>
-
-        <li>
-          <Link to="/superadmin/activity-logs">
-            <FaHistory /> Activity Logs
-          </Link>
-        </li>
-
-      </ul>
-
-      {/* ===== BOTTOM SECTION ===== */}
-      <div className="sidebar-bottom">
-
-        <Link to="/superadmin/profile">
-          <FaUserCircle /> Profile Settings
-        </Link>
-
-        <div className="logout-btn" onClick={handleLogout}>
-          <FaSignOutAlt /> Logout
+          <div className="logout-btn">
+            <FaSignOutAlt /> Logout
+          </div>
         </div>
-
       </div>
-
-    </div>
+    </>
   );
 };
 
