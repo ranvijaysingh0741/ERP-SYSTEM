@@ -93,3 +93,72 @@
   color: #4a6cf7;
   font-weight: bold;
 }
+
+
+.cards-container {
+  width: 100%;
+}
+
+.card {
+  background: rgba(255,255,255,0.96);
+  border-radius: 22px;
+  padding: 26px;
+  box-shadow: 0 12px 32px rgba(15,23,42,0.08);
+}
+
+.student-card {
+  min-height: 300px;
+}
+
+.student-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.student-header h3 {
+  font-size: 22px;
+  color: #061735;
+}
+
+.total-students {
+  color: #2563eb;
+}
+
+.chart-wrapper {
+  width: 250px;
+  height: 250px;
+  margin: 18px auto;
+  position: relative;
+}
+
+.center-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.gender-info {
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  color: #475569;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.boys {
+  background: #91aeca;
+}
+
+.girls {
+  background: #e8a5d4;
+}
