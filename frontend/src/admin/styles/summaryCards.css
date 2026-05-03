@@ -56,10 +56,9 @@
 
 }
 
-@media (max-width: 500px) {
-
-  .summary-container {
-    grid-template-columns: 1fr;
-  }
-
+.summary-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 22px;
 }
