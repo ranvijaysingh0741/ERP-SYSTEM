@@ -36,7 +36,7 @@ export default function Topbar() {
 
   return (
     <div
-      className="relative border-b border-[#e5e7eb]"
+      className="center-topbar relative border-b border-[#e5e7eb]"
       style={{
         backgroundColor: "#f8fafc",
         backgroundImage: `
@@ -86,7 +86,7 @@ export default function Topbar() {
         </div>
       </div>
 
-      <div className="bg-[#d7cfbe]">
+      <div className="center-user-strip bg-[#d7cfbe]">
   <div className="max-w-[1400px] mx-auto px-4 py-1.5 flex flex-wrap justify-center items-center gap-2 text-[10px] md:text-[12px] font-bold uppercase tracking-[0.6px]">
     <span>{user?.center_code || "MCA45"} (User)</span>
     <span>IP: 2401:4900:88F2:124B:9503:8AA2:8618:6FBD</span>
