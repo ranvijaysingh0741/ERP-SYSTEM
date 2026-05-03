@@ -1,7 +1,5 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import AdminLayout from "../components/AdminLayout";
-import "../styles/admin.css";
 
 const CertificateStudents = () => {
 
@@ -14,43 +12,39 @@ const CertificateStudents = () => {
   ];
 
   return (
-    <AdminLayout>
+    <div style={{padding:"30px"}}>
 
-      <div className="admin-page">
+      <h2>{decodeURIComponent(type)}</h2>
+      <h3>{className} - Select Student</h3>
 
-        <h2>{decodeURIComponent(type)}</h2>
-        <h3>{className} - Select Student</h3>
+      <table style={{width:"100%", marginTop:"20px"}}>
+        <thead>
+          <tr>
+            <th>Enrollment</th>
+            <th>Name</th>
+            <th>Generate</th>
+          </tr>
+        </thead>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Enrollment</th>
-              <th>Name</th>
-              <th>Generate</th>
+        <tbody>
+          {students.map((stu, index) => (
+            <tr key={index}>
+              <td>{stu.enroll}</td>
+              <td>{stu.name}</td>
+              <td>
+                <Link
+                  to={`/certificate-preview/${type}/${className}/${stu.enroll}`}
+                >
+                  Generate
+                </Link>
+              </td>
             </tr>
-          </thead>
+          ))}
+        </tbody>
 
-          <tbody>
-            {students.map((stu, index) => (
-              <tr key={index}>
-                <td>{stu.enroll}</td>
-                <td>{stu.name}</td>
-                <td>
-                  <Link
-                    to={`/admin/certificate-preview/${type}/${className}/${stu.enroll}`}
-                  >
-                    Generate
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+      </table>
 
-        </table>
-
-      </div>
-
-    </AdminLayout>
+    </div>
   );
 };
 
