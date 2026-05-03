@@ -1,45 +1,158 @@
 .admin-overview {
-  background: rgb(242, 238, 239);
-  padding: 25px;
-  border-radius: 14px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-margin-top: 70px;
+  width: 100%;
+  height: 145px;
+  background: linear-gradient(135deg, #ffffff 0%, #f4efff 100%);
+  border-radius: 16px;
+  padding: 26px 30px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
 }
 
-.admin-text h2 {
-  margin-bottom: 5px;
-  font-size: 35px;
+.admin-info {
+  z-index: 2;
 }
 
-.admin-text h4 {
-  color: #2e6cd0;
-  margin-bottom: 10px;
+.admin-info h4 {
+  color: #0b4dff;
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 12px;
 }
 
-.admin-text p {
-  color: gray;
-  max-width: 600px;
-  
+.admin-info p {
+  color: #334155;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 500;
 }
 
+/* SUPER ADMIN BUTTON */
 .admin-badge {
-  background: #688eba;
+  z-index: 3;
+  background: linear-gradient(135deg, #3157ff, #4f46e5);
   color: white;
-  padding: 10px 18px;
-  border-radius: 20px;
-  font-weight: bold;
+  border: none;
+  padding: 13px 24px;
+  border-radius: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 25px rgba(49, 87, 255, 0.35);
 }
 
-@media (max-width: 768px) {
+/* BUILDING IMAGE CSS */
+.building-image {
+  position: absolute;
+  right: 230px;
+  bottom: 0;
+  width: 330px;
+  height: 130px;
+  opacity: 0.75;
+}
 
-  .admin-overview {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
+.roof {
+  position: absolute;
+  left: 110px;
+  bottom: 62px;
+  width: 115px;
+  height: 38px;
+  background: #7f9cff;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
 
+.building-body {
+  position: absolute;
+  left: 125px;
+  bottom: 22px;
+  width: 85px;
+  height: 55px;
+  background: #a9bbff;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+.building-body div {
+  width: 10px;
+  height: 45px;
+  background: #eef2ff;
+  border-radius: 3px;
+}
+
+.base {
+  position: absolute;
+  left: 78px;
+  bottom: 0;
+  width: 180px;
+  height: 24px;
+  background: #c8d4ff;
+  border-radius: 50px 50px 0 0;
+}
+
+.flag {
+  position: absolute;
+  left: 168px;
+  bottom: 98px;
+  width: 3px;
+  height: 32px;
+  background: #5978ff;
+}
+
+.flag::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0;
+  width: 24px;
+  height: 15px;
+  background: #6d8cff;
+  clip-path: polygon(0 0, 100% 20%, 0 100%);
+}
+
+.cloud {
+  position: absolute;
+  background: #cdd7ff;
+  border-radius: 50px;
+  opacity: 0.8;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: #cdd7ff;
+  border-radius: 50%;
+}
+
+.cloud-one {
+  width: 55px;
+  height: 18px;
+  left: 20px;
+  bottom: 75px;
+}
+
+.cloud-one::before {
+  width: 25px;
+  height: 25px;
+  left: 10px;
+  top: -12px;
+}
+
+.cloud-two {
+  width: 65px;
+  height: 20px;
+  right: 10px;
+  bottom: 85px;
+}
+
+.cloud-two::before {
+  width: 28px;
+  height: 28px;
+  left: 16px;
+  top: -14px;
 }
