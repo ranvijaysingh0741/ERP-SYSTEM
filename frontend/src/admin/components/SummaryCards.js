@@ -1,34 +1,34 @@
 import React from "react";
 import "../styles/summaryCards.css";
 
-const SummaryCards = ({ stats }) => {
+const SummaryCards = () => {
 
   const data = [
-    {
-      title: "Students",
-      count: stats.students,
-      change: "+15%",
-      color: "#d9ebf4"
-    },
-    {
-      title: "Centers",
-      count: stats.centers,
-      change: "+8%",
-      color: "#d9ebf4"
-    },
-    {
-      title: "Pending",
-      count: stats.pending,
-      change: "-3%",
-      color: "#d9ebf4"
-    },
-    {
-      title: "Approved",
-      count: stats.approved,
-      change: "+10%",
-      color: "#d9ebf4"
-    }
-  ];
+  {
+    title: "Students",
+    count: 124684,
+    change: "+15%",
+    color: "#d9ebf4"
+  },
+  {
+    title: "Teachers",
+    count: 12379,
+    change: "-3%",
+    color: "#d9ebf4"
+  },
+  {
+    title: "Staffs",
+    count: 29300,
+    change: "-3%",
+    color: "#d9ebf4"
+  },
+  {
+    title: "Centers",
+    count: 185,
+    change: "+8%",
+    color: "#d9ebf4"
+  }
+];
 
   return (
     <div className="summary-container">
@@ -54,7 +54,7 @@ const SummaryCards = ({ stats }) => {
             <span className="dots">•••</span>
           </div>
 
-          <h2>{Number(item.count || 0).toLocaleString()}</h2>
+          <h2>{item.count.toLocaleString()}</h2>
           <p>{item.title}</p>
 
         </div>
