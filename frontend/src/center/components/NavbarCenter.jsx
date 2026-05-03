@@ -17,7 +17,7 @@ const navBtn = (active = false) =>
       : "bg-[#ef4444] text-white hover:bg-[#dc2626]"
   }`;
   return (
-    <div className="bg-white border-b border-slate-200">
+    <div className="center-nav bg-white border-b border-slate-200">
       <div className="max-w-[1400px] mx-auto flex justify-center items-center gap-4 md:gap-6 py-3">
         <button
           onClick={() => navigate("/center/dashboard")}
