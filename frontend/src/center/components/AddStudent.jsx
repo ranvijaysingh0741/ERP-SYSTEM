@@ -158,7 +158,7 @@ export default function AddStudent() {
             <div className="px-7 md:px-10 py-7">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                  <label className={labelClass}>Student Course *</label>
+                  <label className={labelClass}>Student Course </label>
                   <select
                     name="course"
                     value={form.course}
