@@ -8,7 +8,7 @@ export default function MarqueeBar() {
 
   return (
     <>
-      <div className="bg-[#1f4a97] border-b border-blue-800 overflow-hidden">
+      <div className="center-marquee bg-[#1f4a97] border-b border-blue-800 overflow-hidden">
         <div className="whitespace-nowrap py-1">
           <div className="inline-block animate-marquee text-white text-[10px] md:text-[13px] font-bold tracking-[0.5px] pl-[60%]">
             {notices}
