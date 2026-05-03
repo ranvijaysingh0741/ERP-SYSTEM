@@ -1,8 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import AdminLayout from "../components/AdminLayout";
 import "../styles/certificatePreview.css";
-import { QRCodeCanvas } from "qrcode.react";
 
 const CertificatePreview = () => {
 
@@ -13,48 +11,31 @@ const CertificatePreview = () => {
   };
 
   return (
-    <AdminLayout>
+    <div className="certificate-wrapper">
 
-      <div className="certificate-wrapper">
+      <div className="certificate-box">
 
-        <div className="certificate-box">
+        <h1>ABC Public School</h1>
+        <h3>{decodeURIComponent(type)}</h3>
 
-          <h1 className="school-name">
-            Board of Vocational and Skill Higher Secondary Education
-          </h1>
+        <p>
+          This is to certify that student with Enrollment No <b>{enroll}</b>
+          of <b>{className}</b> is a bonafide student of this institution.
+        </p>
 
-          <h2 className="cert-type">
-            {decodeURIComponent(type)}
-          </h2>
+        <p>Date: ____________</p>
 
-          <p className="cert-text">
-            This is to certify that student with Enrollment No
-            <b> {enroll} </b>
-            of <b>{className}</b> is a bonafide student of this institution.
-          </p>
-
-          <p>Date: ____________</p>
-
-          <div className="sign-section">
-            <span>Authorized Signature</span>
-          </div>
-
-          <div style={{ marginTop: "20px" }}>
-           <QRCodeCanvas
-           value={`http://localhost:3000/verify/${enroll}`}
-           size={100}
-            />
-            </div>
-
+        <div className="sign-section">
+          <span>Principal Signature</span>
         </div>
-
-        <button className="print-btn" onClick={handlePrint}>
-          Print / Download PDF
-        </button>
 
       </div>
 
-    </AdminLayout>
+      <button className="print-btn" onClick={handlePrint}>
+        Print / Download PDF
+      </button>
+
+    </div>
   );
 };
 
