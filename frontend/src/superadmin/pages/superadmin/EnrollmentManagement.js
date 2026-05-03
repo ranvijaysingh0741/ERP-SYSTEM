@@ -68,7 +68,7 @@ const EnrollmentManagement = () => {
                 <td>
                   <button
                     className="edit-btn"
-                    onClick={() => navigate(`/superadmin/school/${school.id}`)}
+                    onClick={() => navigate(`/school/${school.id}`)}
                   >
                     View
                   </button>
