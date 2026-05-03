@@ -12,21 +12,18 @@ import "../styles/cards.css";
 
 ChartJS.register(ArcElement, Tooltip);
 
-const DashboardCards = ({ stats }) => {
+const DashboardCards = () => {
 
-  const boys = stats.boys || 0;
-  const girls = stats.girls || 0;
+  /* ===== STUDENT DATA ===== */
+  const boys = 45414;
+  const girls = 40270;
 
   const totalStudents = boys + girls;
 
-  const boysPercent = totalStudents
-    ? ((boys / totalStudents) * 100).toFixed(0)
-    : 0;
+  const boysPercent = ((boys / totalStudents) * 100).toFixed(0);
+  const girlsPercent = ((girls / totalStudents) * 100).toFixed(0);
 
-  const girlsPercent = totalStudents
-    ? ((girls / totalStudents) * 100).toFixed(0)
-    : 0;
-
+  /* ===== CHART DATA ===== */
   const genderData = {
     labels: ["Boys", "Girls"],
     datasets: [
@@ -49,8 +46,10 @@ const DashboardCards = ({ stats }) => {
   return (
     <div className="cards-container">
 
+      {/* ========= STUDENT CARD ========= */}
       <div className="card student-card">
 
+        {/* HEADER */}
         <div className="student-header">
           <h3>Students</h3>
           <h2 className="total-students">
@@ -58,6 +57,7 @@ const DashboardCards = ({ stats }) => {
           </h2>
         </div>
 
+        {/* CHART */}
         <div className="chart-wrapper">
           <Doughnut data={genderData} options={genderOptions} />
 
@@ -67,6 +67,7 @@ const DashboardCards = ({ stats }) => {
           </div>
         </div>
 
+        {/* STATS */}
         <div className="gender-info">
 
           <div>
